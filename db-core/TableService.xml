@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configuration Dependencies
+
+This list captures items that are dependent on cFE configuration parameters and system configurations. See
+ExecutiveService.xml for general dependency notes.
+
+1. Message IDs, CCSDS header lengths
+2. OS_MAX_PATH_LEN, 64
+3. OS_MAX_API_NAME, 20
+3. CFE_TBL_MAX_NAME_LENGTH, 16
+4. CFE_TBL_MAX_FULL_NAME_LEN = 16 + 20 + 2
+5. /ram in default file names(CFE_ES_RAM_DISK_MOUNT_STRING)
+
+-->
+
+<Application>
+   <Name>Table Service</Name>
+   <Prefix>TBL</Prefix>
+  
+   <Commands>
+      <MsgId>CFE_TBL_CMD_MID</MsgId>
+
+      <CmdPacket>
+         <Name>No Op</Name>
+         <FuncCode>0</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Reset Counters</Name>
+         <FuncCode>1</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Load Table</Name>
+         <FuncCode>2</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>File Name</Name>
+            <Default>UNDEF   </Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Dump Table</Name>
+         <FuncCode>3</FuncCode>
+         <CmdParam type="Integer" len="2">
+            <Name>Active Table Flag (0=Inactive,1=Active)</Name>
+            <Default>1</Default>
+         </CmdParam>
+         <CmdParam type="String" len="38">
+            <Name>Table Name</Name>
+            <Default></Default>
+         </CmdParam>
+         <CmdParam type="String" len="64">
+            <Name>Dump File Name</Name>
+            <Default>/ram/cfe_tbl.dmp</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Validate Table</Name>
+         <FuncCode>4</FuncCode>
+         <CmdParam type="Integer" len="2">
+            <Name>Active Table Flag (0=Inactive,1=Active)</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="String" len="38">
+            <Name>Table Name</Name>
+            <Default>UNDEF   </Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Activate Table</Name>
+         <FuncCode>5</FuncCode>
+         <CmdParam type="String" len="38">
+            <Name>Table Name</Name>
+            <Default>UNDEF   </Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Dump Registry</Name>
+         <FuncCode>6</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>Registry File Name</Name>
+            <Default>/ram/cfe_tbl_reg.log</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Send One Table Regsitry</Name>
+         <FuncCode>7</FuncCode>
+         <CmdParam type="String" len="38">
+            <Name>Table Name</Name>
+            <Default>UNDEF   </Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Delete Table CDS</Name>
+         <FuncCode>8</FuncCode>
+         <CmdParam type="String" len="38">
+            <Name>Table Name</Name>
+            <Default>UNDEF   </Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Abort Table Load</Name>
+         <FuncCode>9</FuncCode>
+         <CmdParam type="String" len="38">
+            <Name>Table Name</Name>
+            <Default>UNDEF   </Default>
+         </CmdParam>
+      </CmdPacket>
+
+   </Commands>
+
+   <Telemetry>
+
+      <TlmPacket>
+         <Name>Housekeeping</Name>
+         <MsgId>CFE_TBL_HK_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="1">CmdCounter</DataPnt>
+         <DataPnt type="Uint" len="1">CmdErrCounter</DataPnt>
+         <DataPnt type="Uint" len="2">NumTables</DataPnt>
+         <DataPnt type="Uint" len="2">NumLoadPending</DataPnt>
+         <DataPnt type="Uint" len="2">ValidationCtr</DataPnt>
+         <DataPnt type="Uint" len="4">LastValCrc</DataPnt>
+         <DataPnt type="Uint" len="4">LastValStatus</DataPnt>
+         <DataPnt type="Uint" len="1">ActiveBuffer</DataPnt>
+         <DataPnt type="String" len="38">LastValTablename</DataPnt>
+         <DataPnt type="Uint" len="1">SuccessValCtr</DataPnt>
+         <DataPnt type="Uint" len="1">FailedValCtr</DataPnt>
+         <DataPnt type="Uint" len="1">NumValRequests</DataPnt>
+         <DataPnt type="Uint" len="1">NumFreeSharedBufs</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">MemPoolHandle</DataPnt>
+         <DataPnt type="Uint" len="4">LastUpdateTimeSeconds</DataPnt>
+         <DataPnt type="Uint" len="4">LastUpdateTimeSubsecs</DataPnt>
+         <DataPnt type="String" len="38">LastUpdatedTbl</DataPnt>
+         <DataPnt type="String" len="64">LastFileLoaded</DataPnt>
+         <DataPnt type="String" len="64">LastFileDumped</DataPnt>
+      </TlmPacket>
+
+   CFE_TBL_TblRegPacket_t
+
+      <TlmPacket>
+         <Name>Table Registry</Name>
+         <MsgId>CFE_TBL_REG_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="4">Size (bytes)</DataPnt>
+         <DataPnt type="Uint" len="4">CRC</DataPnt>
+         <DataPnt type="Uint" len="4">Active Buffer Address</DataPnt>
+         <DataPnt type="Uint" len="4">Inactive Buffer Address</DataPnt>
+         <DataPnt type="Uint" len="4">Validation Function Pointer</DataPnt>
+         <DataPnt type="Uint" len="4">Last Update Time Seconds</DataPnt>
+         <DataPnt type="Uint" len="4">Last Update Time Subsecs</DataPnt>
+         <DataPnt type="Uint" len="4">File Create Time Seconds</DataPnt>
+         <DataPnt type="Uint" len="4">File Create Time Subsecs</DataPnt>
+         <DataPnt type="Uint" len="1">Table Loaded Once (boolean)</DataPnt>
+         <DataPnt type="Uint" len="1">Load Pending (boolean)</DataPnt>
+         <DataPnt type="Uint" len="1">Dump Only (boolean)</DataPnt>
+         <DataPnt type="Uint" len="1">Double Buffered (boolean)</DataPnt>
+         <DataPnt type="String" len="38">Name</DataPnt>
+         <DataPnt type="String" len="64">Last File Loaded</DataPnt>
+         <DataPnt type="String" len="20">Owner App Name</DataPnt>
+         <DataPnt type="Uint" len="1">Critical (boolean)</DataPnt>
+         <DataPnt type="Uint" len="1">Spare</DataPnt>
+      </TlmPacket>
+
+   </Telemetry>
+  
+</Application>

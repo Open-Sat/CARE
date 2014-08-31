@@ -1,0 +1,25 @@
+2014-08-28 19:09:04,583 ERROR [main] app.FswXmlApp -    Message ID not found in midConfig properties: TEST_HK_TLM_MID
+2014-08-28 19:09:13,247 DEBUG [main] app.CareApp - userAppExists() looking for TEST in _TEMPLATE_
+2014-08-28 19:09:13,248 DEBUG [main] app.CareApp - userAppExists() looking for TEST in FW_APP
+2014-08-28 19:09:36,561 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2014-08-28 19:10:01,700 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2014-08-28 19:10:28,707 ERROR [main] app.CareApp - logActivityError message = 2014-240-19:09:50.547 - GND - Connection to the CFS aborted
+2014-08-28 19:10:30,517 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in ES
+2014-08-28 19:10:30,518 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TBL
+2014-08-28 19:10:30,518 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in EVS
+2014-08-28 19:10:30,518 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TIME
+2014-08-28 19:10:30,518 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in SB
+2014-08-28 19:10:30,519 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABCMD
+2014-08-28 19:10:30,519 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABTLM
+2014-08-28 19:10:30,519 DEBUG [main] app.CareApp - Found LABTLM
+2014-08-28 19:10:30,556 DEBUG [main] app.CareApp - createMsgIdStrArray() adding 0xf03-_TEMPLATE_: Housekeeping
+2014-08-28 19:10:30,556 DEBUG [main] app.CareApp - createMsgIdStrArray() adding 0xf02-FW_APP: Fault Detectors
+2014-08-28 19:10:30,556 DEBUG [main] app.CareApp - createMsgIdStrArray() adding 0xf00-FW_APP: Housekeeping
+2014-08-28 19:10:30,557 DEBUG [main] app.CareApp - createMsgIdStrArray() adding 0xf01-FW_APP: Vector Data
+2014-08-28 19:10:30,557 DEBUG [main] app.CareApp - createMsgIdStrArray() adding 0xf04-TEST: Housekeeping
+2014-08-28 19:11:31,522 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2014-08-28 19:11:31,523 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2014-08-28 19:12:50,787 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2014-08-28 19:12:50,787 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2014-08-28 19:13:43,481 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2014-08-28 19:15:11,016 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64

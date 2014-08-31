@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configuration Dependencies
+
+This list captures items that are dependent on cFE configuration parameters and system configurations. See
+ExecutiveService.xml for general dependency notes.
+
+1. Message IDs, CCSDS header lengths
+2. OS_MAX_PATH_LEN
+3. OS_MAX_API_NAME
+4. CFE_SB_MAX_PIPES
+5. CFE_SB_SUB_ENTRIES_PER_PKT
+6. /ram in default file names(CFE_ES_RAM_DISK_MOUNT_STRING)
+
+Function Code Notes:
+ 6 - is unused.
+ 9 - Enable subscription reporting is intended for SBN onboard use and not ground ops
+10 - Disable subscription reporting is intended for SBN onboard use and not ground ops
+11 - Send Previous Subscriptions is intended for SBN onboard use and not ground ops
+
+-->
+
+<Application>
+   <Name>Software Bus</Name>
+   <Prefix>SB</Prefix>
+  
+   <Commands>
+      <MsgId>CFE_SB_CMD_MID</MsgId>
+      <CmdPacket>
+         <Name>No Op</Name>
+         <FuncCode>0</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Reset Counters</Name>
+         <FuncCode>1</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Send Stats</Name>
+         <FuncCode>2</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Write Route Data</Name>
+         <FuncCode>3</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>File Name</Name>
+            <Default>/ram/cfe_sb_route.dat</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Enable Route</Name>
+         <FuncCode>4</FuncCode>
+         <CmdParam type="Integer" len="2">
+            <Name>Message ID</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>Pipe ID</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Disable Route</Name>
+         <FuncCode>5</FuncCode>
+         <CmdParam type="Integer" len="2">
+            <Name>Message ID</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>Pipe ID</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Write Pipe Data</Name>
+         <FuncCode>7</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>File Name</Name>
+            <Default>/ram/cfe_sb_pipe.dat</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Write Map Data</Name>
+         <FuncCode>8</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>File Name</Name>
+            <Default>/ram/cfe_sb_msgmap.dat</Default>
+         </CmdParam>
+      </CmdPacket>
+   </Commands>
+
+   static final public int CMD_FC_DIS_SUB_REPORTING = 10;
+   static final public int CMD_FC_SEND_PREV_SUBS    = 11;
+
+   <Telemetry>
+      <TlmPacket>
+         <Name>Housekeeping</Name>
+         <MsgId>CFE_SB_HK_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="1">CmdCounter</DataPnt>
+         <DataPnt type="Uint" len="1">CmdErrCounter</DataPnt>
+         <DataPnt type="Uint" len="1">NoSubscribersCnt</DataPnt>
+         <DataPnt type="Uint" len="1">MsgSendErrCnt</DataPnt>
+         <DataPnt type="Uint" len="1">MsgReceiveErrCnt</DataPnt>
+         <DataPnt type="Uint" len="1">InternalErrCnt</DataPnt>
+         <DataPnt type="Uint" len="1">CreatePipeErrCnt</DataPnt>
+         <DataPnt type="Uint" len="1">SubscribeErrCnt</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="1">DupSubscriptionsCnt</DataPnt>
+         <DataPnt type="Uint" len="2">Unused</DataPnt>
+         <DataPnt type="Uint" len="2">PipeOverflowErrCnt</DataPnt>
+         <DataPnt type="Uint" len="2">MsgIdToPipeErrCnt</DataPnt>
+         <DataPnt type="Uint" len="4">MemPoolHandle</DataPnt>
+         <DataPnt type="Uint" len="4">MemInUse</DataPnt>
+         <DataPnt type="Uint" len="4">UnmarkedMem</DataPnt>
+      </TlmPacket>
+
+      <TlmPacket>
+         <Name>Statistics</Name>
+         <MsgId>CFE_SB_STATS_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="4">MsgIdsInUse</DataPnt>
+         <DataPnt type="Uint" len="4">PeakMsgIdsInUse</DataPnt>
+         <DataPnt type="Uint" len="4">MaxMsgIdsAllowed</DataPnt>
+         <DataPnt type="Uint" len="4">PipesInUse</DataPnt>
+         <DataPnt type="Uint" len="4">PeakPipesInUse</DataPnt>
+         <DataPnt type="Uint" len="4">MaxPipesAllowed</DataPnt>
+         <DataPnt type="Uint" len="4">MemInUse</DataPnt>
+         <DataPnt type="Uint" len="4">PeakMemInUse</DataPnt>
+         <DataPnt type="Uint" len="4">MaxMemAllowed</DataPnt>
+         <DataPnt type="Uint" len="4">SubscriptionsInUse</DataPnt>
+         <DataPnt type="Uint" len="4">PeakSubscriptionsInUse</DataPnt>
+         <DataPnt type="Uint" len="4">MaxSubscriptionsAllowed</DataPnt>
+         <DataPnt type="Uint" len="4">SBBuffersInUse</DataPnt>
+         <DataPnt type="Uint" len="4">PeakSBBuffersInUse</DataPnt>
+         <DataPnt type="Uint" len="4">MaxPipeDepthAllowed</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[00]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[00]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[00]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[00]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[00]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[01]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[01]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[01]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[01]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[01]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[02]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[02]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[02]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[02]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[02]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[03]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[03]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[03]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[03]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[03]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[04]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[04]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[04]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[04]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[04]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[05]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[05]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[05]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[05]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[05]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[06]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[06]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[06]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[06]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[06]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[07]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[07]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[07]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[07]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[07]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[08]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[08]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[08]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[08]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[08]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[09]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[09]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[09]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[09]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[09]</DataPnt>
+
+         <DataPnt type="Uint" len="1">PipeId[10]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[10]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[10]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[10]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[10]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[11]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[11]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[11]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[11]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[11]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[12]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[12]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[12]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[12]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[12]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[13]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[13]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[13]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[13]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[13]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[14]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[14]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[14]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[14]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[14]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[15]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[15]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[15]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[15]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[15]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[16]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[16]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[16]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[16]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[16]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[17]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[17]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[17]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[17]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[17]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[18]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[18]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[18]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[18]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[18]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[19]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[19]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[19]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[19]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[19]</DataPnt>
+
+         <DataPnt type="Uint" len="1">PipeId[20]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[20]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[20]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[20]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[20]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[21]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[21]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[21]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[21]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[21]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[22]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[22]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[22]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[22]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[22]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[23]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[23]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[23]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[23]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[23]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[24]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[24]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[24]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[24]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[24]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[25]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[25]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[25]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[25]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[25]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[26]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[26]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[26]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[26]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[26]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[27]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[27]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[27]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[27]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[27]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[28]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[28]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[28]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[28]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[28]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[29]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[29]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[29]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[29]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[29]</DataPnt>
+
+         <DataPnt type="Uint" len="1">PipeId[30]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[30]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[30]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[30]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[30]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[31]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[31]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[31]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[31]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[31]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[32]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[32]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[32]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[32]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[32]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[33]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[33]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[33]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[33]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[33]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[34]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[34]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[34]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[34]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[34]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[35]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[35]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[35]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[35]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[35]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[36]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[36]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[36]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[36]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[36]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[37]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[37]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[37]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[37]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[37]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[38]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[38]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[38]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[38]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[38]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[39]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[39]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[39]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[39]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[39]</DataPnt>
+
+         <DataPnt type="Uint" len="1">PipeId[40]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[40]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[40]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[40]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[40]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[41]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[41]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[41]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[41]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[41]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[42]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[42]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[42]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[42]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[42]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[43]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[43]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[43]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[43]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[43]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[44]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[44]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[44]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[44]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[44]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[45]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[45]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[45]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[45]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[45]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[46]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[46]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[46]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[46]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[46]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[47]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[47]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[47]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[47]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[47]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[48]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[48]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[48]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[48]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[48]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[49]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[49]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[49]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[49]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[49]</DataPnt>
+
+         <DataPnt type="Uint" len="1">PipeId[50]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[50]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[50]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[50]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[50]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[51]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[51]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[51]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[51]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[51]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[52]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[52]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[52]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[52]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[52]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[53]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[53]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[53]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[53]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[53]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[54]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[54]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[54]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[54]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[54]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[55]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[55]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[55]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[55]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[55]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[56]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[56]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[56]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[56]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[56]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[57]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[57]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[57]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[57]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[57]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[58]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[58]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[58]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[58]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[58]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[59]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[59]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[59]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[59]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[59]</DataPnt>
+
+         <DataPnt type="Uint" len="1">PipeId[60]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[60]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[60]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[60]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[60]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[61]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[61]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[61]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[61]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[61]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[62]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[62]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[62]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[62]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[62]</DataPnt>
+         <DataPnt type="Uint" len="1">PipeId[63]</DataPnt>
+         <DataPnt type="Uint" len="1">Spare[63]</DataPnt>
+         <DataPnt type="Uint" len="2">Depth[63]</DataPnt>
+         <DataPnt type="Uint" len="2">InUse[63]</DataPnt>
+         <DataPnt type="Uint" len="2">PeakInUse[63]</DataPnt>
+      </TlmPacket>
+   </Telemetry>
+  
+</Application>

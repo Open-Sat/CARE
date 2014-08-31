@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configuration Dependencies
+
+This list captures items that are dependent on cFE configuration parameters and system configurations. See
+ExecutiveService.xml for general dependency notes.
+
+1. Message IDs, CCSDS header lengths
+
+-->
+
+<Application>
+   <Name>Time Service</Name>
+   <Prefix>TIME</Prefix>
+  
+   <Commands>
+      <MsgId>CFE_TIME_CMD_MID</MsgId>
+
+      <CmdPacket>
+         <Name>No Op</Name>
+         <FuncCode>0</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Reset Counters</Name>
+         <FuncCode>1</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Send Diagnostic Packet</Name>
+         <FuncCode>2</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Set Source</Name>
+         <FuncCode>3</FuncCode>
+         <CmdParam type="Integer" len="2">
+            <Name>Source (TBD Options)</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Set State</Name>
+         <FuncCode>4</FuncCode>
+         <CmdParam type="Integer" len="2">
+            <Name>State (-1=Invalid, 0=Valid, 1=FlyWheel)</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Add Delta Time at Tone</Name>
+         <FuncCode>5</FuncCode>
+         <CmdParam type="Integer" len="4">
+            <Name>Seconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="4">
+            <Name>Subseconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Subtract Delta Time at Tone</Name>
+         <FuncCode>6</FuncCode>
+         <CmdParam type="Integer" len="4">
+            <Name>Seconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="4">
+            <Name>Subseconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Set Time</Name>
+         <FuncCode>7</FuncCode>
+         <CmdParam type="Integer" len="4">
+            <Name>Seconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="4">
+            <Name>Subseconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Set MET</Name>
+         <FuncCode>8</FuncCode>
+         <CmdParam type="Integer" len="4">
+            <Name>Seconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="4">
+            <Name>Subseconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Set STCF</Name>
+         <FuncCode>9</FuncCode>
+         <CmdParam type="Integer" len="4">
+            <Name>Seconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="4">
+            <Name>Subseconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Set Leap Seconds</Name>
+         <FuncCode>10</FuncCode>
+         <CmdParam type="Integer" len="4">
+            <Name>Seconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="4">
+            <Name>Subseconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Add Delta Time to STCF</Name>
+         <FuncCode>11</FuncCode>
+         <CmdParam type="Integer" len="4">
+            <Name>Seconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="4">
+            <Name>Subseconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Subtract Delta Time from STCF</Name>
+         <FuncCode>12</FuncCode>
+         <CmdParam type="Integer" len="4">
+            <Name>Seconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="4">
+            <Name>Subseconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Add Delta Time at 1Hz</Name>
+         <FuncCode>13</FuncCode>
+         <CmdParam type="Integer" len="4">
+            <Name>Seconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="4">
+            <Name>Subseconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Subtract Delta Time at 1Hz</Name>
+         <FuncCode>14</FuncCode>
+         <CmdParam type="Integer" len="4">
+            <Name>Seconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="4">
+            <Name>Subseconds</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Set Tone Signal Source</Name>
+         <FuncCode>15</FuncCode>
+         <CmdParam type="Integer" len="2">
+            <Name>Source (1=Pri, 2=Red)</Name>
+            <Default>1</Default>
+         </CmdParam>
+      </CmdPacket>
+
+   </Commands>
+
+   <Telemetry>
+
+      <TlmPacket>
+         <Name>Housekeeping</Name>
+         <MsgId>CFE_TIME_HK_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="1">CmdCounter</DataPnt>
+         <DataPnt type="Uint" len="1">CmdErrCounter</DataPnt>
+         <DataPnt type="Uint" len="2">ClockStateFlags</DataPnt>
+         <DataPnt type="Uint" len="2">ClockStateAPI</DataPnt>
+         <DataPnt type="Uint" len="2">LeapSeconds</DataPnt>
+         <DataPnt type="Uint" len="4">SecondsMET</DataPnt>
+         <DataPnt type="Uint" len="4">SubsecsMET</DataPnt>
+         <DataPnt type="Uint" len="4">SecondsSTCF</DataPnt>
+         <DataPnt type="Uint" len="4">SubsecsSTCF</DataPnt>
+         <DataPnt type="Uint" len="4">SecondsDelay</DataPnt>
+         <DataPnt type="Uint" len="4">SubsecsDelay</DataPnt>
+      </TlmPacket>
+
+      <TlmPacket>
+         <Name>Diagnostic</Name>
+         <MsgId>CFE_TIME_DIAG_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="4">At Tone MET Seconds</DataPnt>
+         <DataPnt type="Uint" len="4">At Tone MET Subsecs</DataPnt>
+         <DataPnt type="Uint" len="4">At Tone STCF Seconds</DataPnt>
+         <DataPnt type="Uint" len="4">At Tone STCF Subsecs</DataPnt>
+         <DataPnt type="Uint" len="4">At Tone Delay Seconds</DataPnt>
+         <DataPnt type="Uint" len="4">At Tone Delay Subsecs</DataPnt>
+         <DataPnt type="Uint" len="4">At Tone Latch Seconds</DataPnt>
+         <DataPnt type="Uint" len="4">At Tone Latch Subsecs</DataPnt>
+         <DataPnt type="Uint" len="2">At Tone Leap Seconds</DataPnt>
+         <DataPnt type="Uint" len="2">Clock State API</DataPnt>
+         <DataPnt type="Uint" len="4">Time Since Tone Seconds</DataPnt>
+         <DataPnt type="Uint" len="4">Time Since Tone Subsecs</DataPnt>
+         <DataPnt type="Uint" len="4">Current Latch Seconds</DataPnt>
+         <DataPnt type="Uint" len="4">Current Latch Subsecs</DataPnt>
+         <DataPnt type="Uint" len="4">Current MET Seconds</DataPnt>
+         <DataPnt type="Uint" len="4">Current MET Subsecs</DataPnt>
+         <DataPnt type="Uint" len="4">Current TAI Seconds</DataPnt>
+         <DataPnt type="Uint" len="4">Current TAI Subsecs</DataPnt>
+         <DataPnt type="Uint" len="4">Current UTC Seconds</DataPnt>
+         <DataPnt type="Uint" len="4">Current UTC Subsecs</DataPnt>
+         <DataPnt type="Uint" len="2">Clock Set State</DataPnt>
+         <DataPnt type="Uint" len="2">Clock Fly State</DataPnt>
+         <DataPnt type="Uint" len="2">Clock Source</DataPnt>
+         <DataPnt type="Uint" len="2">Clock Signal</DataPnt>
+         <DataPnt type="Uint" len="2">Server Fly State</DataPnt>
+         <DataPnt type="Uint" len="2">Forced to Fly</DataPnt>
+         <DataPnt type="Uint" len="2">Clock State Flags</DataPnt>
+         <DataPnt type="Uint" len="2">STCF One Time Direction (1=Add, 2=Sub)</DataPnt>
+         <DataPnt type="Uint" len="2">STCF One Hz Direction (1=Add, 2=Sub)</DataPnt>
+         <DataPnt type="Uint" len="2">Tone Delay Direction (1=Add, 2=Sub)</DataPnt>
+         <DataPnt type="Uint" len="4">STCF One Time Adjust Seconds</DataPnt>
+         <DataPnt type="Uint" len="4">STCF One Time Adjust Subsecs</DataPnt>
+         <DataPnt type="Uint" len="4">STCF 1Hz Adjust Seconds</DataPnt>
+         <DataPnt type="Uint" len="4">STCF 1Hz Adjust Subsecs</DataPnt>
+         <DataPnt type="Uint" len="4">Tone Signal Latch Seconds</DataPnt>
+         <DataPnt type="Uint" len="4">Tone Signal Latch Subsecs</DataPnt>
+         <DataPnt type="Uint" len="4">Tone Data Latch Seconds</DataPnt>
+         <DataPnt type="Uint" len="4">Tone Data Latch Subsecs</DataPnt>
+         <DataPnt type="Uint" len="4">Tone Match Count</DataPnt>
+         <DataPnt type="Uint" len="4">Tone Match Errors</DataPnt>
+         <DataPnt type="Uint" len="4">Tone Signal Count</DataPnt>
+         <DataPnt type="Uint" len="4">Tone Data Count</DataPnt>
+         <DataPnt type="Uint" len="4">Tone Int Count</DataPnt>
+         <DataPnt type="Uint" len="4">Tone Int Errors</DataPnt>
+         <DataPnt type="Uint" len="4">Tone Task Count</DataPnt>
+         <DataPnt type="Uint" len="4">Version Count</DataPnt>
+         <DataPnt type="Uint" len="4">Local Int Count</DataPnt>
+         <DataPnt type="Uint" len="4">Local Task Count</DataPnt>
+         <DataPnt type="Uint" len="4">Virtual MET</DataPnt>
+         <DataPnt type="Uint" len="4">Tone Window Valid Min Elapsed</DataPnt>
+         <DataPnt type="Uint" len="4">Tone Window Valid Max Elapsed</DataPnt>
+         <DataPnt type="Uint" len="4">Max Local Clock Seconds</DataPnt>
+         <DataPnt type="Uint" len="4">Max Local Clock Subsecs</DataPnt>
+         <DataPnt type="Uint" len="4">Tone Over Limit</DataPnt>
+         <DataPnt type="Uint" len="4">Tone Under Limit</DataPnt>
+         <DataPnt type="Uint" len="4">Data Store Status</DataPnt>
+      </TlmPacket>
+
+   </Telemetry>
+  
+</Application>

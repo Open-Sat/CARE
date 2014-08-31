@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>
+This file defines the cFE configuration used for a CARE session. It follows the Java property file syntax. 
+
+</comment>
+<entry key="version">Proto Mission 1.0</entry>
+<entry key=""></entry>
+</properties>

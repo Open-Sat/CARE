@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configuration Dependencies
+
+This list captures items that are dependent on cFE configuration parameters and system configurations. See
+ExecutiveService.xml for general dependency notes.
+
+1. Message IDs, CCSDS header lengths
+2. The PreFix must equal the "XML_VAL" constant
+
+-->
+
+<Application>
+   <Name>Trivial FTP</Name>
+   <Prefix>TFAPP</Prefix>
+  
+   <Commands>
+      <MsgId>TFAPP_CMD_MID</MsgId>
+
+      <!-- Order Noop first by convention, not function code -->
+      
+      <CmdPacket>
+         <Name>Reset Counters</Name>
+         <FuncCode>0</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>No Op</Name>
+         <FuncCode>1</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Set Debug Mode</Name>
+         <FuncCode>2</FuncCode>
+         <CmdParam type="Integer" len="2">
+            <Name>Debug Mode (0=Off, 1=Terminal, 2=File)</Name>
+            <Default>1</Default>
+         </CmdParam>
+         <CmdParam type="String" len="64">
+            <Name>Log File</Name>
+            <Default>tfapp_debug.txt</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Get File</Name>
+         <FuncCode>3</FuncCode>
+         <CmdParam len="64" type="String">
+            <Name>Source File</Name>
+            <Default>/ram/TBD </Default>
+         </CmdParam>
+         <CmdParam len="64" type="String">
+            <Name>Destination File</Name>
+            <Default>get.dat</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Put File</Name>
+         <FuncCode>4</FuncCode>
+         <CmdParam len="64" type="String">
+            <Name>Source File</Name>
+            <Default>TBD </Default>
+         </CmdParam>
+         <CmdParam len="64" type="String">
+            <Name>Destination File</Name>
+            <Default>/ram/put.dat</Default>
+         </CmdParam>
+      </CmdPacket>
+
+   </Commands>
+   
+   <Telemetry>
+      <TlmPacket>
+         <Name>Housekeeping</Name>
+         <MsgId>TFAPP_HK_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="2">CmdCounter</DataPnt>
+         <DataPnt type="Uint" len="2">CmdErrCounter</DataPnt>
+         <DataPnt type="Uint" len="2">Debug Mode</DataPnt>
+         <DataPnt type="Uint" len="2">GetFileCnt</DataPnt>
+         <DataPnt type="Uint" len="2">PutFileCnt</DataPnt>
+         <DataPnt type="Uint" len="1">Socket ID</DataPnt>
+         <DataPnt type="Uint" len="1">TFTP State</DataPnt>
+         <DataPnt type="Uint" len="2">BlockNum</DataPnt>
+         <DataPnt type="String" len="32">Host</DataPnt>
+         <DataPnt type="String" len="32">Port</DataPnt>
+         <DataPnt type="String" len="64">SrcFile</DataPnt>
+         <DataPnt type="String" len="64">DestFile</DataPnt>
+        </TlmPacket>
+   </Telemetry>
+
+</Application>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configuration Dependencies
+
+This list captures items that are dependent on cFE configuration parameters and system configurations. See
+ExecutiveService.xml for general dependency notes.
+
+1. Message IDs, CCSDS header lengths
+
+TODO - 
+
+   static final public Integer CMD_FC_MOD_PDU_FILESIZE  = 2;
+   static final public Integer CMD_FC_CORRUPT_PDU_CKSUM = 3;
+   static final public Integer CMD_FC_DROP_PDUS         = 4;
+   static final public Integer CMD_FC_CAPTURE_PDUS      = 5;
+   static final public Integer CMD_FC_STOP_PDU_CAPTURE  = 6;
+
+-->
+
+<Application>
+   <Name>Command Ingest</Name>
+   <Prefix>CI_LAB</Prefix>
+  
+   <Commands>
+      <MsgId>CI_LAB_CMD_MID</MsgId>
+      <CmdPacket>
+         <Name>No Op</Name>
+         <FuncCode>0</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Reset Counters</Name>
+         <FuncCode>1</FuncCode>
+      </CmdPacket>
+   </Commands>
+   
+   <Telemetry>
+      <TlmPacket>
+         <Name>Housekeeping</Name>
+         <MsgId>CI_LAB_HK_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="1">CmdErrCounter</DataPnt>
+         <DataPnt type="Uint" len="1">CmdCounter</DataPnt>
+         <DataPnt type="Uint" len="1">ci_xsums_enabled</DataPnt>
+         <DataPnt type="Uint" len="1">SocketConnected</DataPnt>
+         <DataPnt type="Uint" len="1">FDPdusDropped</DataPnt>
+         <DataPnt type="Uint" len="1">EOFPdusDropped</DataPnt>
+         <DataPnt type="Uint" len="1">FINPdusDropped</DataPnt>
+         <DataPnt type="Uint" len="1">ACKPdusDropped</DataPnt>
+         <DataPnt type="Uint" len="1">MDPdusDropped</DataPnt>
+         <DataPnt type="Uint" len="1">NAKPdusDropped</DataPnt>
+         <DataPnt type="Uint" len="2">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">IngestPackets</DataPnt>
+         <DataPnt type="Uint" len="4">IngestErrors</DataPnt>
+         <DataPnt type="Uint" len="4">PDUsCaptured</DataPnt>
+      </TlmPacket>
+   </Telemetry>
+  
+</Application>

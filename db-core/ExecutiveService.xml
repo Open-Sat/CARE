@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configuration Dependencies
+
+This list captures items that are dependent on cFE configuration parameters and system configurations. 
+
+1. Message IDs, CCSDS header lengths
+2. OS_MAX_PATH_LEN, 64
+3. OS_MAX_API_NAME, 20
+4. CFE_SB_MAX_PIPES, 64
+5. CFE_ES_MAX_SHELL_CMD, 64
+6. CFE_ES_CDS_MAX_FULL_NAME_LEN, 38 (relies on another)
+7. CFE_ES_PERF_MAX_IDS, 128
+8. CFE_ES_MAX_SHELL_PKT, 64
+9. /ram in default file names(CFE_ES_RAM_DISK_MOUNT_STRING)
+
+General dependency notes:
+
+1. This does not include command & telemetry structures and command function codes. Those are just duplicate definitions that would
+   need to be updated when the code is updated. It could be improved by using symbols. Command mnemonics could also be defined.
+
+-->
+
+
+<Application>
+
+   <Name>Executive Service</Name>
+   <Prefix>ES</Prefix>
+
+   <Commands>
+      <MsgId>CFE_ES_CMD_MID</MsgId>
+
+      <CmdPacket>
+         <Name>No Op</Name>
+         <FuncCode>0</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Reset Counters</Name>
+         <FuncCode>1</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Reset cFE</Name>
+         <FuncCode>2</FuncCode>
+         <CmdParam type="Integer" len="2">
+            <Name>Reset Type</Name>
+            <Default>1</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Shell Command</Name>
+         <FuncCode>3</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>Command</Name>
+            <Default>pwd</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Start App</Name>
+         <FuncCode>4</FuncCode>
+         <CmdParam type="String" len="20">
+            <Name>App Name</Name>
+            <Default>UNDEF               </Default>
+         </CmdParam>
+         <CmdParam type="String" len="20">
+            <Name>Symbolic Entry Point Name</Name>
+            <Default>UNDEF               </Default>
+         </CmdParam>
+         <CmdParam type="String" len="64">
+            <Name>Executable File Path/Name</Name>
+            <Default>UNDEF               </Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="4">
+            <Name>Stack Size</Name>
+            <Default>8192</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="2">
+            <Name>Exception Action</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="2">
+            <Name>Priority</Name>
+            <Default>50</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Stop App</Name>
+         <FuncCode>5</FuncCode>
+         <CmdParam type="String" len="20">
+            <Name>App Name</Name>
+            <Default>UNDEF               </Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Restart App</Name>
+         <FuncCode>6</FuncCode>
+         <CmdParam type="String" len="20">
+            <Name>App Name</Name>
+            <Default>UNDEF               </Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Reload App</Name>
+         <FuncCode>7</FuncCode>
+         <CmdParam type="String" len="20">
+            <Name>App Name</Name>
+            <Default>UNDEF               </Default>
+         </CmdParam>
+         <CmdParam type="String" len="64">
+            <Name>Executable File Path/Name</Name>
+            <Default>UNDEF               </Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Send App Info</Name>
+         <FuncCode>8</FuncCode>
+         <CmdParam type="String" len="20">
+            <Name>App Name</Name>
+            <Default>UNDEF               </Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Write App Log</Name>
+         <FuncCode>9</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>File Name</Name>
+            <Default>/ram/cfe_es_app_info.log</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Clear Sys Log</Name>
+         <FuncCode>10</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Write Sys Log</Name>
+         <FuncCode>11</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>Mode</Name>
+            <Default>/ram/cfe_es_syslog.log</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Clear ER Log</Name>
+         <FuncCode>12</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Write ER Log</Name>
+         <FuncCode>13</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>File Name</Name>
+            <Default>/ram/cfe_es_erlog.log</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Set Sys Log Mode</Name>
+         <FuncCode>14</FuncCode>
+         <CmdParam type="Integer" len="4">
+            <Name>Trigger Mode (Start, Center, End)</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Stop Performance Log</Name>
+         <FuncCode>15</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>File Name</Name>
+            <Default>/ram/cfe_es_perf.dat</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Set Performance Filter Mask</Name>
+         <FuncCode>16</FuncCode>
+         <CmdParam type="Integer" len="4">
+            <Name>Filter Mask Index</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="4">
+            <Name>Filter Mask</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Set Trigger Mask</Name>
+         <FuncCode>17</FuncCode>
+         <CmdParam type="Integer" len="4">
+            <Name>Filter Mask Index</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="4">
+            <Name>Filter Mask</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Set Sys Log Mode</Name>
+         <FuncCode>18</FuncCode>
+         <CmdParam type="Integer" len="4">
+            <Name>File Name</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Reset Processor Reset Count</Name>
+         <FuncCode>19</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Set Max Processor Resets</Name>
+         <FuncCode>20</FuncCode>
+         <CmdParam type="Integer" len="2">
+            <Name>Maxc Resets Before Power On Reset</Name>
+            <Default>3</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Delete CDS</Name>
+         <FuncCode>21</FuncCode>
+         <CmdParam type="String" len="38">
+            <Name>CDS Name</Name>
+            <Default>UNDEF               </Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Send MemPool Stats</Name>
+         <FuncCode>22</FuncCode>
+         <CmdParam type="String" len="20">
+            <Name>Reserved</Name>
+            <Default>UNDEF               </Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="4">
+            <Name>Memory Pool Handle</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Write CDS Registry</Name>
+         <FuncCode>23</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>File Name</Name>
+            <Default>/ram/cfe_cds_reg.log</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Write Task Log</Name>
+         <FuncCode>24</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>File Name</Name>
+            <Default>/ram/cfe_es_task_info.log</Default>
+         </CmdParam>
+      </CmdPacket>
+
+   </Commands>
+
+   <Telemetry>
+
+      <TlmPacket>
+         <Name>Housekeeping</Name>
+         <MsgId>CFE_ES_HK_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="1">CmdCounter</DataPnt>
+         <DataPnt type="Uint" len="1">CmdErrCounter</DataPnt>
+         <DataPnt type="Uint" len="2">CFECoreChecksum</DataPnt>
+         <DataPnt type="Uint" len="1">CFEMajorVersion</DataPnt>
+         <DataPnt type="Uint" len="1">CFEMinorVersion</DataPnt>
+         <DataPnt type="Uint" len="1">CFERevision</DataPnt>
+         <DataPnt type="Uint" len="1">CFEMissionRevision</DataPnt>
+         <DataPnt type="Uint" len="1">OSALMajorVersion</DataPnt>
+         <DataPnt type="Uint" len="1">OSALMinorVersion</DataPnt>
+         <DataPnt type="Uint" len="2">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">SysLogBytesUsed</DataPnt>
+         <DataPnt type="Uint" len="4">SysLogSize</DataPnt>
+         <DataPnt type="Uint" len="4">SysLogEntries</DataPnt>
+         <DataPnt type="Uint" len="4">SysLogMode</DataPnt>
+         <DataPnt type="Uint" len="4">ERLogIndex</DataPnt>
+         <DataPnt type="Uint" len="4">ERLogEntries</DataPnt>
+         <DataPnt type="Uint" len="4">RegisteredCoreApps</DataPnt>
+         <DataPnt type="Uint" len="4">RegisteredExternalApps</DataPnt>
+         <DataPnt type="Uint" len="4">RegisteredTasks</DataPnt>
+         <DataPnt type="Uint" len="4">RegisteredLibs</DataPnt>
+         <DataPnt type="Uint" len="4">ResetType</DataPnt>
+         <DataPnt type="Uint" len="4">ResetSubtype</DataPnt>
+         <DataPnt type="Uint" len="4">ProcessorResets</DataPnt>
+         <DataPnt type="Uint" len="4">MaxProcessorResets</DataPnt>
+         <DataPnt type="Uint" len="4">BootSource</DataPnt>
+         <DataPnt type="Uint" len="4">PerfState</DataPnt>
+         <DataPnt type="Uint" len="4">PerfMode</DataPnt>
+         <DataPnt type="Uint" len="4">PerfTriggerCount</DataPnt>
+         <DataPnt type="Uint" len="4">PerfFilterMask[CFE_ES_PERF_MAX_IDS/32]</DataPnt>
+         <DataPnt type="Uint" len="4">PerfFilterMask[CFE_ES_PERF_MAX_IDS/32]</DataPnt>
+         <DataPnt type="Uint" len="4">PerfFilterMask[CFE_ES_PERF_MAX_IDS/32]</DataPnt>
+         <DataPnt type="Uint" len="4">PerfFilterMask[CFE_ES_PERF_MAX_IDS/32]</DataPnt>
+         <DataPnt type="Uint" len="4">PerfFilterMask[CFE_ES_PERF_MAX_IDS/32]</DataPnt>
+         <DataPnt type="Uint" len="4">PerfFilterMask[CFE_ES_PERF_MAX_IDS/32]</DataPnt>
+         <DataPnt type="Uint" len="4">PerfFilterMask[CFE_ES_PERF_MAX_IDS/32]</DataPnt>
+         <DataPnt type="Uint" len="4">PerfFilterMask[CFE_ES_PERF_MAX_IDS/32]</DataPnt>
+         <DataPnt type="Uint" len="4">PerfDataStart</DataPnt>
+         <DataPnt type="Uint" len="4">PerfDataEnd</DataPnt>
+         <DataPnt type="Uint" len="4">PerfDataCount</DataPnt>
+         <DataPnt type="Uint" len="4">PerfDataToWrite</DataPnt>
+         <DataPnt type="Uint" len="4">HeapBytesFree</DataPnt>
+         <DataPnt type="Uint" len="4">HeapBlocksFree</DataPnt>
+         <DataPnt type="Uint" len="4">HeapMaxBlockSize</DataPnt>
+      </TlmPacket>
+
+      <TlmPacket>
+         <Name>Memory Pool Statistics</Name>
+         <MsgId>CFE_ES_MEMSTATS_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="4">Handle</DataPnt>
+         <DataPnt type="Uint" len="4">Size</DataPnt>
+         <DataPnt type="Uint" len="4">Blocks Requested</DataPnt>
+         <DataPnt type="Uint" len="4">Check Error Count</DataPnt>
+         <DataPnt type="Uint" len="4">Free Bytes</DataPnt>
+         <DataPnt type="Uint" len="4">Block Size[0]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Created[0]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Free[0]</DataPnt>
+         <DataPnt type="Uint" len="4">Block Size[1]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Created[1]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Free[1]</DataPnt>
+         <DataPnt type="Uint" len="4">Block Size[2]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Created[2]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Free[2]</DataPnt>
+         <DataPnt type="Uint" len="4">Block Size[3]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Created[3]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Free[3]</DataPnt>
+         <DataPnt type="Uint" len="4">Block Size[4]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Created[4]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Free[4]</DataPnt>
+         <DataPnt type="Uint" len="4">Block Size[5]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Created[5]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Free[5]</DataPnt>
+         <DataPnt type="Uint" len="4">Block Size[6]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Created[6]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Free[6]</DataPnt>
+         <DataPnt type="Uint" len="4">Block Size[7]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Created[7]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Free[7]</DataPnt>
+         <DataPnt type="Uint" len="4">Block Size[8]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Created[8]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Free[8]</DataPnt>
+         <DataPnt type="Uint" len="4">Block Size[9]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Created[9]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Free[9]</DataPnt>
+         <DataPnt type="Uint" len="4">Block Size[10]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Created[10]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Free[10]</DataPnt>
+         <DataPnt type="Uint" len="4">Block Size[11]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Created[11]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Free[11]</DataPnt>
+         <DataPnt type="Uint" len="4">Block Size[12]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Created[12]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Free[12]</DataPnt>
+         <DataPnt type="Uint" len="4">Block Size[13]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Created[13]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Free[13]</DataPnt>
+         <DataPnt type="Uint" len="4">Block Size[14]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Created[14]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Free[14]</DataPnt>
+         <DataPnt type="Uint" len="4">Block Size[15]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Created[15]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Free[15]</DataPnt>
+         <DataPnt type="Uint" len="4">Block Size[16]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Created[16]</DataPnt>
+         <DataPnt type="Uint" len="4">Num Free[16]</DataPnt>
+      </TlmPacket>
+
+      <TlmPacket>
+         <Name>Shell Command Output</Name>
+         <MsgId>CFE_ES_SHELL_TLM_MID</MsgId>
+         <DataPnt type="String" len="64">Output String</DataPnt>
+      </TlmPacket>
+
+      <TlmPacket>
+         <Name>App Info</Name>
+         <MsgId>CFE_ES_APP_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="4">App ID</DataPnt>
+         <DataPnt type="Uint" len="4">Type</DataPnt>
+         <DataPnt type="String" len="20">Name</DataPnt>
+         <DataPnt type="String" len="20">Entry Point</DataPnt>
+         <DataPnt type="String" len="64">File Name</DataPnt>
+         <DataPnt type="Uint" len="4">Stack Size</DataPnt>
+         <DataPnt type="Uint" len="4">Module ID</DataPnt>
+         <DataPnt type="Uint" len="4">Addresses Are Valid</DataPnt>
+         <DataPnt type="Uint" len="4">Code Address</DataPnt>
+         <DataPnt type="Uint" len="4">Code Size</DataPnt>
+         <DataPnt type="Uint" len="4">Data Address</DataPnt>
+         <DataPnt type="Uint" len="4">Data Size</DataPnt>
+         <DataPnt type="Uint" len="4">BSS Address</DataPnt>
+         <DataPnt type="Uint" len="4">BSS Size</DataPnt>
+         <DataPnt type="Uint" len="4">Start Address</DataPnt>
+         <DataPnt type="Uint" len="2">Exception Action</DataPnt>
+         <DataPnt type="Uint" len="2">Priority</DataPnt>
+         <DataPnt type="Uint" len="4">Main Task ID</DataPnt>
+         <DataPnt type="Uint" len="4">Execution Counter</DataPnt>
+         <DataPnt type="String" len="20">Main Task Name</DataPnt>
+         <DataPnt type="Uint" len="4">Number of Child Tasks</DataPnt>
+      </TlmPacket>
+
+   </Telemetry>
+
+</Application>

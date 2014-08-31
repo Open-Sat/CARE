@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>
+This file defines the message IDs used for a CARE session. It follows the Java XML property file syntax. 
+
+cfe_msgids.h defines the default cFE message IDs. A mission typically creates a single header file for
+each processor that includes all of the messages IDs for the processor. 
+
+Note the messages used to wakeup apps or schedule HK TLM packets are not defined in this file. 
+
+</comment>
+
+<entry key="version">Proto Mission 1.0</entry>
+
+<entry key="CFE_ES_CMD_MID">1806</entry>
+<entry key="CFE_ES_HK_TLM_MID">0800</entry>
+<entry key="CFE_ES_APP_TLM_MID">080B</entry>
+<entry key="CFE_ES_SHELL_TLM_MID">080F</entry>
+<entry key="CFE_ES_MEMSTATS_TLM_MID">0810</entry>
+
+<entry key="CFE_EVS_CMD_MID">1801</entry>
+<entry key="CFE_EVS_HK_TLM_MID">0801</entry>
+<entry key="CFE_EVS_EVENT_MSG_MID">0808</entry>
+
+<entry key="CFE_SB_CMD_MID">1803</entry>
+<entry key="CFE_SB_HK_TLM_MID">0803</entry>
+<entry key="CFE_SB_STATS_TLM_MID">080A</entry>
+
+<entry key="CFE_TBL_CMD_MID">1804</entry>
+<entry key="CFE_TBL_HK_TLM_MID">0804</entry>
+<entry key="CFE_TBL_REG_TLM_MID">080C</entry>
+
+<entry key="CFE_TIME_CMD_MID">1805</entry>
+<entry key="CFE_TIME_HK_TLM_MID">0805</entry>
+<entry key="CFE_TIME_DIAG_TLM_MID">0806</entry>
+
+<entry key="LABCMD_CMD_MID">1884</entry>
+<entry key="LABCMD_HK_TLM_MID">0884</entry>
+
+<entry key="LABTLM_CMD_MID">1880</entry>
+<entry key="LABTLM_HK_TLM_MID">0880</entry>
+<entry key="LABTLM_DATA_TYPES_TLM_MID">0881</entry>
+
+<entry key="LABSCH_CMD_MID">1882</entry>
+<entry key="LABSCH_HK_TLM_MID">0882</entry>
+
+<entry key="TFAPP_CMD_MID">1889</entry>
+<entry key="TFAPP_HK_TLM_MID">0889</entry>
+
+<entry key="FWAPP_CMD_MID">1863</entry>
+<entry key="FWAPP_HK_TLM_MID">0F00</entry>
+<entry key="FWAPP_VEC_TLM_MID">0F01</entry>
+<entry key="FWAPP_FD_TLM_MID">0F02</entry>
+
+<entry key="_TEMPLATE__CMD_MID">1866</entry>
+<entry key="_TEMPLATE__HK_TLM_MID">0F03</entry>
+
+</properties>

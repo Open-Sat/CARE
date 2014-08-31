@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configuration Dependencies
+
+This list captures items that are dependent on cFE configuration parameters and system configurations. See
+ExecutiveService.xml for general dependency notes.
+
+1. Message IDs, CCSDS header lengths
+2. OS_MAX_PATH_LEN, 64
+3. OS_MAX_API_NAME, 20
+4. CFE_ES_MAX_APPLICATIONS, 32
+5. CFE_EVS_MAX_MESSAGE_LENGTH, 122
+6. /ram in default file names(CFE_ES_RAM_DISK_MOUNT_STRING)
+
+-->
+
+<Application>
+   <Name>Event Service</Name>
+   <Prefix>EVS</Prefix>
+  
+   <Commands>
+      <MsgId>CFE_EVS_CMD_MID</MsgId>
+
+      <CmdPacket>
+         <Name>No Op</Name>
+         <FuncCode>1</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Reset Counters</Name>
+         <FuncCode>2</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Enable Event Type</Name>
+         <FuncCode>3</FuncCode>
+         <CmdParam type="Integer" len="1">
+            <Name>Bit Mask (0: Debug, 1:Info, 2:Err, 3:Crit)</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>Spare</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Disable Event Type</Name>
+         <FuncCode>4</FuncCode>
+         <CmdParam type="Integer" len="1">
+            <Name>Bit Mask (0: Debug, 1:Info, 2:Err, 3:Crit)</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>Spare</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Set Format Mode</Name>
+         <FuncCode>5</FuncCode>
+         <CmdParam type="Integer" len="1">
+            <Name>Mode</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>Spare</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Enable App Event Type</Name>
+         <FuncCode>6</FuncCode>
+         <CmdParam type="String" len="20">
+            <Name>App Name/Name</Name>
+            <Default>UNDEF    </Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>Bit Mask (0: Debug, 1:Info, 2:Err, 3:Crit)</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>Spare</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Disable App Event Type</Name>
+         <FuncCode>7</FuncCode>
+         <CmdParam type="String" len="20">
+            <Name>App Name/Name</Name>
+            <Default>UNDEF    </Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>Bit Mask (0: Debug, 1:Info, 2:Err, 3:Crit)</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>Spare</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Enable App Events</Name>
+         <FuncCode>8</FuncCode>
+         <CmdParam type="String" len="20">
+            <Name>App Name/Name</Name>
+            <Default>UNDEF    </Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Disable App Events</Name>
+         <FuncCode>9</FuncCode>
+         <CmdParam type="String" len="20">
+            <Name>App Name/Name</Name>
+            <Default>UNDEF    </Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Reset App Counters</Name>
+         <FuncCode>10</FuncCode>
+         <CmdParam type="String" len="20">
+            <Name>App Name/Name</Name>
+            <Default>UNDEF    </Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Set App Event Filter</Name>
+         <FuncCode>11</FuncCode>
+         <CmdParam type="String" len="20">
+            <Name>App Name/Name</Name>
+            <Default>UNDEF    </Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="2">
+            <Name>Event ID</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="2">
+            <Name>Bit Mask (0: Debug, 1:Info, 2:Err, 3:Crit)</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Enable Event Port</Name>
+         <FuncCode>12</FuncCode>
+         <CmdParam type="Integer" len="1">
+            <Name>Bit Mask (0: Debug, 1:Info, 2:Err, 3:Crit)</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>Spare</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Disable Event Port</Name>
+         <FuncCode>13</FuncCode>
+         <CmdParam type="Integer" len="1">
+            <Name>Bit Mask (0: Debug, 1:Info, 2:Err, 3:Crit)</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>Spare</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Reset One App Filter</Name>
+         <FuncCode>14</FuncCode>
+         <CmdParam type="String" len="20">
+            <Name>App Name/Name</Name>
+            <Default>UNDEF    </Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="2">
+            <Name>Event ID</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Reset All App Filters</Name>
+         <FuncCode>15</FuncCode>
+         <CmdParam type="String" len="20">
+            <Name>App Name/Name</Name>
+            <Default>UNDEF    </Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Add App Event Filter</Name>
+         <FuncCode>16</FuncCode>
+         <CmdParam type="String" len="20">
+            <Name>App Name/Name</Name>
+            <Default>UNDEF    </Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="2">
+            <Name>Event ID</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="2">
+            <Name>Bit Mask (0: Debug, 1:Info, 2:Err, 3:Crit)</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Delete App Event Filter</Name>
+         <FuncCode>17</FuncCode>
+         <CmdParam type="String" len="20">
+            <Name>App Name/Name</Name>
+            <Default>UNDEF    </Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="2">
+            <Name>Event ID</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="2">
+            <Name>Bit Mask (0: Debug, 1:Info, 2:Err, 3:Crit)</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Write App Info</Name>
+         <FuncCode>18</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>App Info File Name/Name</Name>
+            <Default>/ram/cfe_evs_app.log</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Write Event Log</Name>
+         <FuncCode>19</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>Event Log File Name/Name</Name>
+            <Default>/ram/cfe_evs.log</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Set Logging Mode</Name>
+         <FuncCode>20</FuncCode>
+         <CmdParam type="Integer" len="1">
+            <Name>Mode (0=Short, 1=Long)</Name>
+            <Default>1</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>Spare</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Clear Event Log</Name>
+         <FuncCode>21</FuncCode>
+      </CmdPacket>
+
+   </Commands>
+
+   <Telemetry>
+
+      <TlmPacket>
+         <Name>Housekeeping</Name>
+         <MsgId>CFE_EVS_HK_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="1">CmdCounter</DataPnt>
+         <DataPnt type="Uint" len="1">CmdErrCounter</DataPnt>
+         <DataPnt type="Uint" len="1">MessageFormatMode</DataPnt>
+         <DataPnt type="Uint" len="1">MessageTruncCounter</DataPnt>
+         <DataPnt type="Uint" len="1">UnregisteredAppCounter</DataPnt>
+         <DataPnt type="Uint" len="1">OutputPort</DataPnt>
+         <DataPnt type="Uint" len="1">LogFullFlag</DataPnt>
+         <DataPnt type="Uint" len="1">LogMode</DataPnt>
+         <DataPnt type="Uint" len="2">MessageSendCounter</DataPnt>
+         <DataPnt type="Uint" len="2">LogOverflowCounter</DataPnt>
+         <DataPnt type="Uint" len="4">MemPoolHandle</DataPnt>
+         <DataPnt type="Uint" len="4">App00ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App01ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App02ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App03ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App04ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App05ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App06ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App07ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App08ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App09ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App10ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App11ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App12ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App13ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App14ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App15ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App16ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App17ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App18ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App19ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App20ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App21ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App22ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App23ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App24ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App25ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App26ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App27ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App28ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App29ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App30ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+         <DataPnt type="Uint" len="4">App31ID</DataPnt>
+         <DataPnt type="Uint" len="2">AppMessageSentCounter</DataPnt>
+         <DataPnt type="Uint" len="1">AppEnableStatus</DataPnt>
+         <DataPnt type="Uint" len="1">Unused</DataPnt>
+      </TlmPacket>
+  
+      <TlmPacket>
+         <Name>Event Message</Name>
+         <MsgId>CFE_EVS_EVENT_MSG_MID</MsgId>
+         <DataPnt type="String" len="20">App Name</DataPnt>
+         <DataPnt type="Uint" len="2">Event ID</DataPnt>
+         <DataPnt type="Uint" len="2">Event Type</DataPnt>
+         <DataPnt type="Uint" len="4">Spacecraft ID</DataPnt>
+         <DataPnt type="Uint" len="4">Processor ID</DataPnt>
+         <DataPnt type="String" len="122">Message Text</DataPnt>
+      </TlmPacket>
+
+   </Telemetry>
+
+</Application>

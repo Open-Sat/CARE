@@ -1,0 +1,155 @@
+<html>
+<header>
+ <style type="text/css">
+  body {
+    padding-left: 11em;
+    font-family: Georgia, "Times New Roman",
+          Times, serif;
+    color: black;
+    background-color:rgb(225,242,243) }
+  ul.navbar {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 2em;
+    left: 1em;
+    width: 9em }
+  h1 {
+    font-family: Helvetica, Geneva, Arial,
+          SunSans-Regular, sans-serif }
+  ul.navbar li {
+    background: white;
+    margin: 0.5em 0;
+    padding: 0.3em;
+    border-right: 1em solid black }
+  ul.navbar a {
+    text-decoration: none }
+  a:link {
+    color: blue }
+  a:visited {
+    color: purple }
+  address {
+    margin-top: 1em;
+    padding-top: 1em;
+    border-top: thin dotted }
+  </style>
+</header>
+<body>
+This tool provides a cFE application runtime environment that can be used for integration and testing new applications. The intention and role of this tool is to help developers develop and test applications and it is 
+not intended to replace ground systems. It should be easy to configure and operate. It has been developed using freely available technology (Java, Eclipse's SWT/JFACE, and XML) and is intended to be maintained
+as an open source project within the CFS community. This overview is organized in the following sections:
+<ul>
+<li>cFE Configuration</li>
+<li>CARE Configuration and Operations</li>
+<li>XML Command and Telemetry Database</li>
+<li>CARE Design</li>
+</ul>
+<h2>cFE Configuration</h2>
+<p>
+CARE makes assumptions about the cFE configuration. Currently some of these are hard coded in the Java source and others are encoded
+in the XML command and telemetry database. A future goal is to make these couplings explicit and easily managed by the user. In the future
+some aspects of CARE may be autonomously generated. Note the CFS uses the generic term message ID. In theory the cFE can be configured not
+to use CCSDS as its packet definition. However in practice the cFE has only been deployed using CCSDS packets. When using CCSDS a CFS message
+ID is the CCSDS Stream ID plus the command/telemetry definition bit. 
+</p>
+<p>TODO List</p>
+<ul>
+<li>cFE must be compiled as a time client. CARE manages time</li>
+<li>cFE startup must include CI, TO and SCH lab applications</li>
+<li>The XML currently is designed to expect one command stream ID per application with function codes used for command</li>
+<li>cFE Couplings: cFE msg IDs hardcoded in XML, def dir assumed (e.g. /cf vs /ram, tlm secondary header size (i.e. time) assumes 12 bytes</li>
+</ul>
+</p>
+
+
+<h2>CARE Configuration and Operations</h2>
+<p>
+CARE is a development tool and is intended to be an open architecture. Many runtime configurations can be changed without digging into the CARE code. The CARE design document
+goes into detailed design and describes design guidelines for updating the Java code base. Since CARE is intended to be used by developers the debugging flag configurations are 
+available to the user. The following directories and files are used to configure CARE:
+
+<dl>
+<dt><b>/config</b></dt>
+<dd>Contains the files that are used to change a user's configuration when CARE runs. All of these files use the Java XML property syntax</dd>
+<dt><i>care-properties.xml</i></dt>
+<dd>CARE application runtime configurations.</dd>
+<dt><i>care-msg-ids.xml</i><dt>
+<dd>Message identifiers used by the FSW and the /db/*.xml files. The keywords are also defined in CARE.java</dd>
+<dt><i>care-cfe-config.xml</i></dt>
+<dd>cFE configuration parameters used by the FSW and the /db/*.xml files. The keywords are also defined in CARE.java. A minimal set of cFE configuration paramters are defined to simplify maintenance. Soemday teh cFE configuration parameters may be defined in a database.</dd>
+<dt><b>/db-core</b><dt>
+<dd>Contains core command, table, telemetry, and file definitions. Core includes the cFE and any essential applications needed to provide a complete user application 
+runtime environment. These definitions should only need to be changed if a new release of a cFE or core application is made that impacts the database.  Depending on 
+the scope of the cFE changes (e.g. configuration parameter changes) CARE.java may also need to be modified.</dd>
+<dt><b>/db-apps</b></dt>
+<dd>Contains user application command, table, telemetry, and file definitions.</dd>
+<dt><b>/src</b></dt>
+<dt><i>log4j.properties</i></dt>
+<dd>Contains logging configurations. Messages can be logged to a file and/or to the console. This is useful for troubleshotting and debugging.</dd>
+</dd>
+</dl>
+
+</p>
+<p>TODO List</p>
+<ul>
+<li>CARE manages time. Currently a disconnect between realtime and simulated time becuase actually task delays used and simulated time tick used. Note keep it simple when thsi is resolved. How this is resolved may depend on whether CARE is integrated with a simulator.</li>
+</ul>
+</p>
+<p>Application Integration</p>
+<ul>
+<li>DB: Command, telemetry, table, file</li>
+<li>Message IDs</li>
+<li>Scheduler</li>
+<li>Load and startup</li>
+<li>The application's command, table, and telemetry user interface is defined in an XML file contained in the <i>db-apps</i> directory. The CAREropoerties.xml file can be used
+to define a list of applications that can be loaded during CARE startup.  New applications can be loaded whiel CARE is running. an application's database definitions can be
+refreshed without restarting CARE.  A command does not exist for removing an application's database definition. If an application is removed teh user can either ignore the
+removed application's definitions or they can restart CARE.</li>
+</ul>
+ 
+<h2>XML Command and Telemetry Database</h2>
+<p>
+An application's command and telemetry packets are defined in an XML file located in the 'db' directory. Each XML should have
+a comment block at the top of the file describing any special notes.  The following guidelines should be followed when creating
+XML definitions:
+<ul>
+<li>All keywords used in the XML files are defined as constants in JCAT.java</li>
+<li>Commands: Add spaces to string parameters to make the command dialog box more readable</li>
+</ul>
+</p>
+<p>TODO List</p>
+<ul>
+<li>Add support for signed integers and telemtry strings</li>
+<li>cFE configuration dependencies are hard coded. See prologues in each XML file for details.</li>
+</ul>
+</p>
+
+<h2>CARE Design</h2>
+<p>TODO List</p>
+<ul>
+<li>Add package diagram with high level descriptions</li>
+<li>Add high level GUI design with design goals</li>
+<li>Add Command and Telemetry sequence diagrams before more detailed class diagrams. This will show high level data flows and teh context for the more detailed class diagrams.</li>
+<li>Add detailed FSW classes and FSW Proxy design</li>
+<li>Add how a script engine would be integrated?</li>
+</ul>
+
+<h2>cFE Release Process</h2>
+<p>Topics</p>
+<ul>
+<li>Update DB if needed</li>
+</ul>
+
+<div><p><strong>Technical References</strong></p></div>
+<ul>
+<li>TODO - cFE Open Source Link</li>
+<li>TODO - OSAL Open Source Link</li>
+</ul>
+<div><p><strong>Known Users</strong></p></div>
+<ul>
+<li>TODO - Raspberry PI</li>
+</ul>
+
+</body>
+</html>

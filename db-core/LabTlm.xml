@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configuration Dependencies
+
+This list captures items that are dependent on cFE configuration parameters and system configurations. See
+ExecutiveService.xml for general dependency notes.
+
+1. Message IDs, CCSDS header lengths
+2. The PreFix must equal the "XML_VAL" constant
+3. /ram in default file names(CFE_ES_RAM_DISK_MOUNT_STRING)
+
+TODO - All C&T packets implemented
+
+-->
+
+<Application>
+   <Name>Lab Telemetry Output</Name>
+   <Prefix>LABTLM</Prefix>
+  
+   <Commands>
+      <MsgId>LABTLM_CMD_MID</MsgId>
+
+      <!-- Order Noop first by convention, not function code -->
+      
+      <CmdPacket>
+         <Name>No Op</Name>
+         <FuncCode>1</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Reset Counters</Name>
+         <FuncCode>0</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Load Packet Table</Name>
+         <FuncCode>2</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>Packet Table File Name</Name>
+            <Default>pkt-tbl.xml</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="2">
+            <Name>Load Type (0=Replace Table, 1=Update Records)</Name>
+            <Default>1</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Dump Packet Table</Name>
+         <FuncCode>3</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>Packet Table File Name</Name>
+            <Default>/ram/pkt-tbl.txt</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Add Packet</Name>
+         <FuncCode>4</FuncCode>
+         <CmdParam type="Integer" len="2">
+            <Name>Stream ID</Name>
+            <Default>0800</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>SB QoS Reliability</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>SB QoS Priority</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>Buffer Limit</Name>
+            <Default>4</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Remove Packet</Name>
+         <FuncCode>5</FuncCode>
+         <CmdParam type="Integer" len="2">
+            <Name>Stream ID</Name>
+            <Default>0800</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Remove All Packets</Name>
+         <FuncCode>6</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Enable Output</Name>
+         <FuncCode>7</FuncCode>
+         <CmdParam type="String" len="16">
+            <Name>IP Address</Name>
+            <Default>127.000.000.001</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Send Data Type Packet</Name>
+         <FuncCode>8</FuncCode>
+      </CmdPacket>
+
+   </Commands>
+
+   <Tables>
+
+      <Table>
+         <Name>Packet</Name>
+         <CData></CData>
+      </Table>
+
+   </Tables>
+   
+   <Telemetry>
+      <TlmPacket>
+         <Name>Housekeeping</Name>
+         <MsgId>LABTLM_HK_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="2">CmdCounter</DataPnt>
+         <DataPnt type="Uint" len="2">CmdErrCounter</DataPnt>
+         <DataPnt type="Uint" len="1">PktTblLoadActive</DataPnt>
+         <DataPnt type="Uint" len="1">PktTblLastLoadValid</DataPnt>
+         <DataPnt type="Uint" len="2">PktTblAttrErrCnt</DataPnt>
+         <DataPnt type="Uint" len="2">TlmSocketId</DataPnt>
+         <DataPnt type="String" len="16">TlmDestIp</DataPnt>
+      </TlmPacket>
+
+      <TlmPacket>
+         <Name>Data Types</Name>
+         <MsgId>LABTLM_DATA_TYPES_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="2">Synch(0x6969,26985)</DataPnt>
+         <DataPnt type="Uint" len="1">Boolean1(false,0)</DataPnt>
+         <DataPnt type="Uint" len="1">Boolean2(true,1)</DataPnt>
+         <DataPnt type="Uint" len="1">Byte1(16)</DataPnt>
+         <DataPnt type="Uint" len="1">Byte2(0x7F,127)</DataPnt>
+         <DataPnt type="Uint" len="1">Byte3(0x7F,127)</DataPnt>
+         <DataPnt type="Uint" len="1">Byte4(0x45,69)</DataPnt>
+         <DataPnt type="Uint" len="2">Word1(0x2468,9320)</DataPnt>
+         <DataPnt type="Uint" len="2">Word2(0x7FFF,32767)</DataPnt>
+         <DataPnt type="Uint" len="4">DWord1(0x12345678,305419896)</DataPnt>
+         <DataPnt type="Uint" len="4">DWord2(0x87654321,2271560481)</DataPnt>
+         <DataPnt type="Uint" len="4">TBD - Float1(90.01)</DataPnt>
+         <DataPnt type="Uint" len="4">TBD - Float2(.0000045)</DataPnt>
+         <DataPnt type="Uint" len="4">TBD - Double1A(99.9)</DataPnt>
+         <DataPnt type="Uint" len="4">TBD - Double1B</DataPnt>
+         <DataPnt type="Uint" len="4">TBD - Double2A(.4444)</DataPnt>
+         <DataPnt type="Uint" len="4">TBD - Double2B</DataPnt>
+         <DataPnt type="String" len="10">String(ABCDEFGHIJ)</DataPnt>
+      </TlmPacket>
+   </Telemetry>
+
+</Application>

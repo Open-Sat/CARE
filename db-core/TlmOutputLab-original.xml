@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configuration Dependencies
+
+This list captures items that are dependent on cFE configuration parameters and system configurations. See
+ExecutiveService.xml for general dependency notes.
+
+1. Message IDs, CCSDS header lengths
+
+TODO - All C&T packets implemented
+
+-->
+
+<Application>
+   <Name>Telemetry Output</Name>
+   <Prefix>TO_LAB</Prefix>
+  
+   <Commands>
+      <MsgId>TO_LAB_CMD_MID</MsgId>
+
+      <CmdPacket>
+         <Name>No Op</Name>
+         <FuncCode>0</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Reset Counters</Name>
+         <FuncCode>1</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Add Packet</Name>
+         <FuncCode>2</FuncCode>
+         <CmdParam type="Integer" len="2">
+            <Name>Stream ID</Name>
+            <Default>0800</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="2">
+            <Name>Pkt Size</Name>
+            <Default>50</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="2">
+            <Name>SB QoS</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>Buffer Limit</Name>
+            <Default>1</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Send Type Packet</Name>
+         <FuncCode>3</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Remove Packet</Name>
+         <FuncCode>4</FuncCode>
+         <CmdParam type="Integer" len="2">
+            <Name>Stream ID</Name>
+            <Default>0800</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Remove All Packets</Name>
+         <FuncCode>5</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Enable Output</Name>
+         <FuncCode>6</FuncCode>
+         <CmdParam type="String" len="16">
+            <Name>IP Address</Name>
+            <Default>127.000.000.001</Default>
+         </CmdParam>
+      </CmdPacket>
+   </Commands>
+   
+   <Telemetry>
+      <TlmPacket>
+         <Name>Housekeeping</Name>
+         <MsgId>TO_LAB_HK_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="1">CmdCounter</DataPnt>
+         <DataPnt type="Uint" len="1">CmdErrCounter</DataPnt>
+         <DataPnt type="Uint" len="2">Unused</DataPnt>
+      </TlmPacket>
+   </Telemetry>
+
+   <Telemetry>
+      <TlmPacket>
+         <Name>Type Test</Name>
+         <MsgId>TO_LAB_DATA_TYPES_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="2">Synch(0x6969,26985)</DataPnt>
+         <DataPnt type="Uint" len="1">Boolean1(false,0)</DataPnt>
+         <DataPnt type="Uint" len="1">Boolean2(true,1)</DataPnt>
+         <DataPnt type="Uint" len="1">Byte1(16)</DataPnt>
+         <DataPnt type="Uint" len="1">Byte2(0x7F,127)</DataPnt>
+         <DataPnt type="Uint" len="1">Byte3(0x7F,127)</DataPnt>
+         <DataPnt type="Uint" len="1">Byte4(0x45,69)</DataPnt>
+         <DataPnt type="Uint" len="2">Word1(0x2468,9320)</DataPnt>
+         <DataPnt type="Uint" len="2">Word2(0x7FFF,32767)</DataPnt>
+         <DataPnt type="Uint" len="4">DWord1(0x12345678,305419896)</DataPnt>
+         <DataPnt type="Uint" len="4">DWord2(0x87654321,2271560481)</DataPnt>
+         <DataPnt type="Uint" len="4">TBD - Float1(90.01)</DataPnt>
+         <DataPnt type="Uint" len="4">TBD - Float2(.0000045)</DataPnt>
+         <DataPnt type="Uint" len="4">TBD - Double1A(99.9)</DataPnt>
+         <DataPnt type="Uint" len="4">TBD - Double1B</DataPnt>
+         <DataPnt type="Uint" len="4">TBD - Double2A(.4444)</DataPnt>
+         <DataPnt type="Uint" len="4">TBD - Double2B</DataPnt>
+         <DataPnt type="String" len="10">String(ABCDEFGHIJ)</DataPnt>
+      </TlmPacket>
+   </Telemetry>
+
+</Application>

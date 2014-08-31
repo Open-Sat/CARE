@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configuration Dependencies
+
+General dependency notes:
+
+1. This does not include command & telemetry structures and command function codes. Those are just duplicate definitions that would
+   need to be updated when the code is updated. It could be improved by using symbols. Command mnemonics could also be defined.
+2. The number of Fault Detector bits impacts the length of the FD telemetry. See APP_FAULTREP_BITFIELD_WORDS definition.
+
+-->
+
+
+<Application>
+
+   <Name>Framework Application</Name>
+   <Prefix>FW_APP</Prefix>
+
+   <Commands>
+      <MsgId>FWAPP_CMD_MID</MsgId>
+
+      <CmdPacket>
+         <Name>Reset Counters</Name>
+         <FuncCode>0</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>No Op</Name>
+         <FuncCode>1</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Clear Fault Detector</Name>
+         <FuncCode>2</FuncCode>
+         <CmdParam type="Integer" len="2">
+            <Name>FD Identifier (65536 = All)</Name>
+            <Default>65536</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Configure Fault Detector</Name>
+         <FuncCode>3</FuncCode>
+         <CmdParam type="Integer" len="2">
+            <Name>FD Identifier (65536 = All)</Name>
+            <Default>65536</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>Configure (0=Disable, 1-Enable)</Name>
+            <Default>1</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>Spare</Name>
+            <Default>0</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Configure Object B Execution</Name>
+         <FuncCode>4</FuncCode>
+         <CmdParam type="Integer" len="1">
+            <Name>Configure (0=Disable, 1-Enable)</Name>
+            <Default>1</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Configure Object C Execution</Name>
+         <FuncCode>5</FuncCode>
+         <CmdParam type="Integer" len="1">
+            <Name>Configure (0=Disable, 1-Enable)</Name>
+            <Default>1</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Configure Object C FD Checks</Name>
+         <FuncCode>6</FuncCode>
+         <CmdParam type="Integer" len="1">
+            <Name>Configure Axis[0](0=Disable, 1-Enable)</Name>
+            <Default>1</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>Configure Axis[1](0=Disable, 1-Enable)</Name>
+            <Default>1</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="1">
+            <Name>Configure Axis[2](0=Disable, 1-Enable)</Name>
+            <Default>1</Default>
+         </CmdParam>
+      </CmdPacket>
+
+   </Commands>
+   
+   <Tables>
+
+      <Table>
+         <Name>FW_APP.ExObj A</Name>
+         <DataPnt type="Float" len="4">Bias[0]</DataPnt>
+         <DataPnt type="Float" len="4">Bias[1]</DataPnt>
+         <DataPnt type="Float" len="4">Bias[2]</DataPnt>
+         <DataPnt type="Float" len="4">ScaleFactor[0]</DataPnt>
+         <DataPnt type="Float" len="4">ScaleFactor[1]</DataPnt>
+         <DataPnt type="Float" len="4">ScaleFactor[2]</DataPnt>
+      </Table>
+
+      <Table>
+         <Name>FW_APP.ExObj B</Name>
+         <DataPnt type="Float" len="4">Coefficient[0]</DataPnt>
+         <DataPnt type="Float" len="4">Coefficient[1]</DataPnt>
+         <DataPnt type="Float" len="4">Coefficient[2]</DataPnt>
+      </Table>
+
+      <Table>
+         <Name>FW_APP.ExObj C</Name>
+         <DataPnt type="Float" len="4">FaultLimit[0]</DataPnt>
+         <DataPnt type="Float" len="4">FaultLimit[1]</DataPnt>
+         <DataPnt type="Float" len="4">FaultLimit[2]</DataPnt>
+      </Table>
+
+
+   </Tables>
+
+
+   <Telemetry>
+
+      <TlmPacket>
+         <Name>Housekeeping</Name>
+         <MsgId>FWAPP_HK_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="2">CmdCounter</DataPnt>
+         <DataPnt type="Uint" len="2">CmdErrCounter</DataPnt>
+         <DataPnt type="Uint" len="2">FaultDetEnabled Bitfield</DataPnt>
+         <DataPnt type="Uint" len="2">FaultDetLatched Bitfield</DataPnt>
+         <DataPnt type="Uint" len="1">Config Obj B (0=Dis, 1=Ena)</DataPnt>
+         <DataPnt type="Uint" len="1">Config Obj C (0=Dis, 1=Ena)</DataPnt>
+      </TlmPacket>
+
+      <TlmPacket>
+         <Name>Vector Data</Name>
+         <MsgId>FWAPP_VEC_TLM_MID</MsgId>
+         <DataPnt type="Float" len="4">ExObjA Vec[0]</DataPnt>
+         <DataPnt type="Float" len="4">ExObjA Vec[1]</DataPnt>
+         <DataPnt type="Float" len="4">ExObjA Vec[2]</DataPnt>
+         <DataPnt type="Float" len="4">ExObjB Vec[0]</DataPnt>
+         <DataPnt type="Float" len="4">ExObjB Vec[1]</DataPnt>
+         <DataPnt type="Float" len="4">ExObjB Vec[2]</DataPnt>
+         <DataPnt type="Float" len="4">ExObjC Vec[0]</DataPnt>
+         <DataPnt type="Float" len="4">ExObjC Vec[1]</DataPnt>
+         <DataPnt type="Float" len="4">ExObjC Vec[2]</DataPnt>
+      </TlmPacket>
+
+      <TlmPacket>
+         <Name>Fault Detectors</Name>
+         <MsgId>FWAPP_FD_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="2">FlagsBits[0]</DataPnt>
+         <DataPnt type="Uint" len="2">FlagsBits[1]</DataPnt>
+         <DataPnt type="Uint" len="2">FlagsBits[2]</DataPnt>
+         <DataPnt type="Uint" len="2">FlagsBits[3]</DataPnt>
+         <DataPnt type="Uint" len="2">FlagsBits[4]</DataPnt>
+      </TlmPacket>
+
+   </Telemetry>
+
+</Application>

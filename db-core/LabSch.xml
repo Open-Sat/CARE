@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configuration Dependencies
+
+General dependency notes:
+
+1. This does not include command & telemetry structures and command function codes. Those are just duplicate definitions that would
+   need to be updated when the code is updated. It could be improved by using symbols. Command mnemonics could also be defined.
+2. The number of Fault Detector bits impacts the length of the FD telemetry. See APP_FAULTREP_BITFIELD_WORDS definition.
+3. The PreFix must equal the "XML_VAL" constant
+4. /ram in default file names(CFE_ES_RAM_DISK_MOUNT_STRING)
+
+-->
+
+
+<Application>
+
+   <Name>Lab Scheduler</Name>
+   <Prefix>LABSCH</Prefix>
+
+   <Commands>
+      <MsgId>LABSCH_CMD_MID</MsgId>
+
+      <!-- Order Noop first by convention, not function code -->
+
+      <CmdPacket>
+         <Name>No Op</Name>
+         <FuncCode>1</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Reset Counters</Name>
+         <FuncCode>0</FuncCode>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Load Message Table</Name>
+         <FuncCode>2</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>Message Table File Name</Name>
+            <Default>/ram/msg-tbl.xml</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="2">
+            <Name>Load Type (0=Replace Table, 1=Update Records)</Name>
+            <Default>1</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Dump Message Table</Name>
+         <FuncCode>3</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>Message Table File Name</Name>
+            <Default>/ram/msg-tbl.txt</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Configure Slot Entry</Name>
+         <FuncCode>4</FuncCode>
+         <CmdParam type="Integer" len="2">
+            <Name>Slot</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="2">
+            <Name>Entry Within Slot</Name>
+            <Default>0</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="2">
+            <Name>Configure Flag (0=Disable,1=Enable)</Name>
+            <Default>1</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Load Scheduler Table</Name>
+         <FuncCode>5</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>Scheduler Table File Name</Name>
+            <Default>/ram/sch-tbl.xml</Default>
+         </CmdParam>
+         <CmdParam type="Integer" len="2">
+            <Name>Load Type (0=Replace Table, 1=Update Records)</Name>
+            <Default>1</Default>
+         </CmdParam>
+      </CmdPacket>
+
+      <CmdPacket>
+         <Name>Dump Scheduler Table</Name>
+         <FuncCode>6</FuncCode>
+         <CmdParam type="String" len="64">
+            <Name>Scheduler Table File Name</Name>
+            <Default>/ram/sch-tbl.txt</Default>
+         </CmdParam>
+      </CmdPacket>
+
+   </Commands>
+   
+   <Tables>
+
+      <Table>
+         <Name>Message</Name>
+         <CData></CData>
+      </Table>
+      <Table>
+         <Name>Scheduler</Name>
+         <CData></CData>
+      </Table>
+
+   </Tables>
+
+
+   <Telemetry>
+
+      <TlmPacket>
+         <Name>Housekeeping</Name>
+         <MsgId>LABSCH_HK_TLM_MID</MsgId>
+         <DataPnt type="Uint" len="2">CmdCounter</DataPnt>
+         <DataPnt type="Uint" len="2">CmdErrCounter</DataPnt>
+         <DataPnt type="Uint" len="1">MsgTblLoadActive</DataPnt>
+         <DataPnt type="Uint" len="1">MsgTblLastLoadValid</DataPnt>
+         <DataPnt type="Uint" len="2">MsgTblAttrErrCnt</DataPnt>
+         <DataPnt type="Uint" len="1">SchTblLoadActive</DataPnt>
+         <DataPnt type="Uint" len="1">SchTblLastLoadValid</DataPnt>
+         <DataPnt type="Uint" len="2">SchTblAttrErrCnt</DataPnt>
+         <DataPnt type="Uint" len="4">SlotsProcessedCount</DataPnt>
+         <DataPnt type="Uint" len="4">ScheduleActivitySuccessCount</DataPnt>
+         <DataPnt type="Uint" len="4">ScheduleActivityFailureCount</DataPnt>
+         <DataPnt type="Uint" len="4">ValidMajorFrameCount</DataPnt>
+         <DataPnt type="Uint" len="4">MissedMajorFrameCount</DataPnt>
+         <DataPnt type="Uint" len="4">UnexpectedMajorFrameCount</DataPnt>
+         <DataPnt type="Uint" len="4">TablePassCount</DataPnt>
+         <DataPnt type="Uint" len="4">ConsecutiveNoisyFrameCounter</DataPnt>
+         <DataPnt type="Uint" len="2">SkippedSlotsCount</DataPnt>
+         <DataPnt type="Uint" len="2">MultipleSlotsCount</DataPnt>
+         <DataPnt type="Uint" len="2">SameSlotCount</DataPnt>
+         <DataPnt type="Uint" len="2">SyncAttemptsLeft</DataPnt>
+         <DataPnt type="Uint" len="2">LastSyncMETSlot</DataPnt>
+         <DataPnt type="Uint" len="1">IgnoreMajorFrame</DataPnt>
+         <DataPnt type="Uint" len="1">UnexpectedMajorFrame</DataPnt>
+      </TlmPacket>
+
+   </Telemetry>
+
+</Application>
