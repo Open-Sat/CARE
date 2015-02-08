@@ -1,27 +1,42 @@
 
-1. Describe cFE directories, startup script, template app, boot and ram directories
-2. Describe directory structure, config files, etc
+1. Describe CYGWIN config: cFE directories, startup script, template app, boot and ram directories
+
+2. Describe CARE directory structure, config files, etc
+
 3. Describe main window layout, drop down menu defaults, and relate back to organization
+
 4. Issue a command and show ground event indicating no connection
+
 5. Issue connect command
+
 6. Issue NOOP command from quick menu
 
 cFE Support using 
 
 1. Set time to 0
+
 2. Issue ES noop and show time
+
 3. Dump Exceutive app table and show apps that are loaded
+
 4. Show cFE help file
 
 Application development using 
 
 1. Show user app menu and lack of Test App
+
 2. Show add telemetry menu and lack of test app
-3. Add Test App DB, show menu
+
+3. Add Test App DB (0x0F04,0x1867), show menu
+
 4. Issue no noop and show message
-5. Display Test App telemetry page - sho wno updates
+
+5. Display Test App telemetry page - show no updates
+
 6. Issue add telemetry command and show test app is present.
+
 7. Reload Test App from RAM. Keep tlm page and show it gets cleared
+
 8. Issue Test noop to prove different app
 9. Reload Test App from RAM and issue noop
 

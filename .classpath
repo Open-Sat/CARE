@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="C:/dmccomas/projects/FSRL/open/tools/java-lib/junit/hamcrest-core-1.1.jar"/>
 	<classpathentry kind="lib" path="C:/dmccomas/projects/FSRL/open/tools/java-lib/junit/junit-4.8.1.jar"/>
 	<classpathentry kind="lib" path="C:/dmccomas/projects/FSRL/open/tools/java-lib/xerces/jdom-2.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/dmccomas/projects/FSRL/open/tools/java-lib/lua/luaj-jse-3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -163,6 +163,47 @@ public class CcsdsPkt
 
    }// End getByteArray()
 
+   /*
+    * Experimental byte flip when I was having issues. I will eventually need something
+    * and this is a giid place to do it.
+    */
+   public byte[] getFlippedByteArray() {
+
+	  int i;
+	  int len = getTotalLength(); // Subtract primary header
+	  
+      byte[] flippedByteArray = new byte[len];
+
+      //byte temp = byteArray[4];
+      //byteArray[4] = byteArray[5];
+      //byteArray[5] = temp;
+      
+      return byteArray;
+      /*
+      for (i=0; i < len; i++) {
+  	   flippedByteArray[i] = byteArray[i];
+      }
+      // Only flip bytes after 6 byte primary header
+      if (len > 6) {
+         if (len % 2 == 0) {
+            for (i=6; i < len; i = i+2) {
+        	   flippedByteArray[i]   = byteArray[i+1];
+        	   flippedByteArray[i+1] = byteArray[i];  
+            }
+         }
+         else {
+            for (i=6; i < (len-1); i = i+2) {
+        	   flippedByteArray[i]   = byteArray[i+1];
+        	   flippedByteArray[i+1] = byteArray[i];  
+            }
+            flippedByteArray[i]   = byteArray[i];  // Copy last odd byte
+            
+         } // End if odd user data length
+      } // End len > 0
+      return flippedByteArray;
+      */
+   }// End getByteArray()
+
    /**
     * Return a ByteBuffer containing the CCSDS packet
     * 

@@ -54,6 +54,7 @@ public class CARE {
    static final public String PROP_APP_CORE_APPS    = "core-apps";
    static final public String PROP_APP_USER_APPS    = "user-apps";
    static final public String PROP_APP_CORE_TOOL_CMDS = "core-tool-cmds";
+   static final public String PROP_APP_LUA_STARTUP  = "lua-startup";
    
    /*****************************************************************************
     ** 

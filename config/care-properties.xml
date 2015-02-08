@@ -32,9 +32,12 @@ Todo:
 <entry key="cfe-file">C:\cygwin\home\dcmccom2\opensat\tmp\</entry>
 <entry key="core-apps">ExecutiveService,TableService,EventService,TimeService,SoftwareBus,LabCmd,LabTlm,LabSch</entry>
 <entry key="core-tool-cmds">TIME:7,ES:4,ES:5,ES:7,ES:0</entry>
-<entry key="care-ip-address">127.000.000.001</entry>
-<entry key="cfs-ip-address">127.000.000.001</entry>
+<entry key="care-ip-address">192.168.007.001</entry>
+<entry key="cfs-ip-address">192.168.007.002</entry>
+<entry key="ccare-ip-address">127.000.000.001</entry>
+<entry key="ccfs-ip-address">127.000.000.001</entry>
 <entry key="cfs-cmd-port">1234</entry>
 <entry key="cfs-tlm-port">1235</entry>
 <entry key="user-apps">_template_,fwapp</entry>
+<entry key="lua-startup">C:\dmccomas\projects\FSRL\open\tools\care\config\startup.lua</entry>
 </properties>

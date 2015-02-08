@@ -129,6 +129,7 @@ public class PktReader implements Runnable
       if (createdSocket) {
          
          status += "Created: "  + creationDate.toString() + ", " + 
+                   "Address: "  + pktSock.getLocalAddress().toString() + ", " + 
                    "Port: "     + pktSock.getLocalPort() + ", " + 
                    "Received: " + pktCount;
       }

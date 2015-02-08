@@ -34,6 +34,7 @@ public class FswCmdNetwork {
       
 	  //System.err.println("sendCmd: " + cmdPkt.getByteArray() + ", " + cmdPkt.getTotalLength());
       pktOutput.WriteCmdPkt(cmdPkt.getByteArray(), cmdPkt.getTotalLength());
+      //pktOutput.WriteCmdPkt(cmdPkt.getFlippedByteArray(), cmdPkt.getTotalLength());
       
    } // End getPktWriter()
    

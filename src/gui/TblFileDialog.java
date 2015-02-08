@@ -1,6 +1,6 @@
 package gui;
 
-import java.util.ArrayList; 
+import java.util.ArrayList;  
 import java.util.Iterator;
 
 import org.apache.log4j.Logger;
@@ -9,6 +9,7 @@ import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.*;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.*;
 import org.eclipse.swt.widgets.*;
 
@@ -95,7 +96,9 @@ public class TblFileDialog extends  CfeFileDialog {
            logger.trace("Closing TblDialog");
         }
      });
-
+     
+     Point pt = getParent().getDisplay().getCursorLocation();
+     shell.setLocation(pt.x, pt.y);
      shell.open();
      /**
      Display display = getParent().getDisplay();
@@ -202,6 +205,6 @@ public class TblFileDialog extends  CfeFileDialog {
 
    } // createContents()
 
-
+  
 } // End class TblFileDialog
 

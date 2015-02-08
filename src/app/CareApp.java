@@ -185,6 +185,10 @@ public class CareApp extends ApplicationWindow {
     */
    private static ConcurrentLinkedQueue<StatusMsg> proxyStatusMsgQ = new ConcurrentLinkedQueue<StatusMsg>();
    
+   /*
+    * Lua script engine
+    */
+   LuaScriptEngine Lua;
    
    /***************************************************************************
     ** 
@@ -278,6 +282,7 @@ public class CareApp extends ApplicationWindow {
       if (scheduler.getInvalidInitTick()) {
          logActivityError(CARE.LOG_CONSOLE, "Invalid user tick of " + simTime.getTick() + "ms specified in properties file. Automatically corrected to " + scheduler.getTick() + "ms");
       }
+      logActivity(CARE.LOG_CONSOLE, Lua.getVersionStr(), false);
       logActivity(CARE.LOG_CONSOLE, "System Startup Complete. Timer Tick = " + scheduler.getTick() + "ms", true);
       scheduler.startThread();
      
@@ -639,7 +644,7 @@ public class CareApp extends ApplicationWindow {
        */
       actionDisplayAbout = new Action() {
          public void run() {
-            MessageDialog.openInformation(getShell(), "About", "CFS Application Integration and Test Environment\nProvides basic user interface for testing and running CFS applications");
+            MessageDialog.openInformation(getShell(), "About", "CFS Application Runtime Environment (CARE)\nProvides basic user interface for running and testing CFS applications");
          }
       };
       actionDisplayAbout.setText("About");
@@ -906,6 +911,8 @@ public class CareApp extends ApplicationWindow {
       compositeTextUserInputGroup.setLayout(new FillLayout());
       compositeTextUserInputGroup.setText("User Input");
 
+      Lua = new LuaScriptEngine(appConfig.getProperty(CARE.PROP_APP_LUA_STARTUP));
+      
       textUserInput = new Text( compositeTextUserInputGroup, SWT.BORDER);
       textUserInput.setText("<User Command>");
       textUserInput.addKeyListener(new KeyListener() {
@@ -922,7 +929,15 @@ public class CareApp extends ApplicationWindow {
             
             if (inputChar == SWT.CR) {
                logger.trace("keyReleased: CR");
-               logActivity(CARE.LOG_USER, textUserInput.getText(), false);
+               String userStr = textUserInput.getText();
+               logActivity(CARE.LOG_USER, userStr, false);
+               if ( !Lua.evalStr(userStr) ) {
+            	   
+            	   logActivity(CARE.LOG_USER, Lua.getEvalStatus(), true);
+               
+               }
+            	   
+            
                textUserInput.setText("");
             }
             

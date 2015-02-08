@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 
+
 import org.apache.log4j.Logger;
 import org.eclipse.swt.*;
 import org.eclipse.swt.events.*;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.*;
 import org.eclipse.swt.widgets.*;
 import org.eclipse.swt.custom.*;
 
 import ccsds.CcsdsTlmPkt;
-
 import app.CARE;
 import app.TlmPageManager;
 import app.FswXmlApp;
-
 import fsw.TlmPkt;
 import fsw.DataPnt;
 import fsw.DataPntStr;
@@ -107,6 +107,8 @@ public class TlmDialog extends  Dialog {
         }
      });
 
+     Point pt = getParent().getDisplay().getCursorLocation();
+     shell.setLocation(pt.x, pt.y);
      shell.open();
      /**
      Display display = getParent().getDisplay();

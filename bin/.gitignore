@@ -4,6 +4,5 @@
 /fsw
 /fswcore
 /gui
-/log4j.properties
-/network
 /util
+/network

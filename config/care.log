@@ -1,25 +1,870 @@
-2014-08-28 19:09:04,583 ERROR [main] app.FswXmlApp -    Message ID not found in midConfig properties: TEST_HK_TLM_MID
-2014-08-28 19:09:13,247 DEBUG [main] app.CareApp - userAppExists() looking for TEST in _TEMPLATE_
-2014-08-28 19:09:13,248 DEBUG [main] app.CareApp - userAppExists() looking for TEST in FW_APP
-2014-08-28 19:09:36,561 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
-2014-08-28 19:10:01,700 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
-2014-08-28 19:10:28,707 ERROR [main] app.CareApp - logActivityError message = 2014-240-19:09:50.547 - GND - Connection to the CFS aborted
-2014-08-28 19:10:30,517 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in ES
-2014-08-28 19:10:30,518 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TBL
-2014-08-28 19:10:30,518 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in EVS
-2014-08-28 19:10:30,518 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TIME
-2014-08-28 19:10:30,518 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in SB
-2014-08-28 19:10:30,519 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABCMD
-2014-08-28 19:10:30,519 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABTLM
-2014-08-28 19:10:30,519 DEBUG [main] app.CareApp - Found LABTLM
-2014-08-28 19:10:30,556 DEBUG [main] app.CareApp - createMsgIdStrArray() adding 0xf03-_TEMPLATE_: Housekeeping
-2014-08-28 19:10:30,556 DEBUG [main] app.CareApp - createMsgIdStrArray() adding 0xf02-FW_APP: Fault Detectors
-2014-08-28 19:10:30,556 DEBUG [main] app.CareApp - createMsgIdStrArray() adding 0xf00-FW_APP: Housekeeping
-2014-08-28 19:10:30,557 DEBUG [main] app.CareApp - createMsgIdStrArray() adding 0xf01-FW_APP: Vector Data
-2014-08-28 19:10:30,557 DEBUG [main] app.CareApp - createMsgIdStrArray() adding 0xf04-TEST: Housekeeping
-2014-08-28 19:11:31,522 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
-2014-08-28 19:11:31,523 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
-2014-08-28 19:12:50,787 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
-2014-08-28 19:12:50,787 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
-2014-08-28 19:13:43,481 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
-2014-08-28 19:15:11,016 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-27 22:01:22,210 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-01-27 22:01:22,210 DEBUG [main] app.CareApp - Found ES
+2015-01-27 22:01:22,210 DEBUG [main] app.CareApp - Found AppProxy
+2015-01-27 22:01:22,210 DEBUG [main] app.CareApp - Found cmdAction
+2015-01-27 22:01:22,210 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-01-27 22:01:22,210 DEBUG [main] app.CareApp - Found ES
+2015-01-27 22:01:22,210 DEBUG [main] app.CareApp - Found AppProxy
+2015-01-27 22:01:22,210 DEBUG [main] app.CareApp - Found cmdAction
+2015-01-27 22:01:22,210 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-01-27 22:01:22,210 DEBUG [main] app.CareApp - Found ES
+2015-01-27 22:01:22,210 DEBUG [main] app.CareApp - Found AppProxy
+2015-01-27 22:01:22,210 DEBUG [main] app.CareApp - Found cmdAction
+2015-01-27 22:01:22,210 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-01-27 22:01:22,210 DEBUG [main] app.CareApp - Found ES
+2015-01-27 22:01:22,210 DEBUG [main] app.CareApp - Found AppProxy
+2015-01-27 22:01:22,210 DEBUG [main] app.CareApp - Found cmdAction
+2015-01-27 22:01:22,226 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-27 22:01:22,226 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-27 22:01:22,819 INFO  [Thread-0] util.Scheduler - Scheduler thread started with tick=500, slotcnt=2
+2015-01-27 22:01:29,768 DEBUG [main] network.PktReader - PktReader: Created socket on port 1235, 0.0.0.0/0.0.0.0:1235, null
+2015-01-27 22:01:29,768 DEBUG [Thread-1] network.PktReader - PktReader: Start while loop
+2015-01-27 22:01:29,831 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in ES
+2015-01-27 22:01:29,831 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TBL
+2015-01-27 22:01:29,831 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in EVS
+2015-01-27 22:01:29,831 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TIME
+2015-01-27 22:01:29,831 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in SB
+2015-01-27 22:01:29,831 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABCMD
+2015-01-27 22:01:29,831 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABTLM
+2015-01-27 22:01:29,831 DEBUG [main] app.CareApp - Found LABTLM
+2015-01-27 22:01:29,831 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 16
+2015-01-29 18:32:49,850 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 15
+2015-01-29 18:32:49,991 INFO  [main] app.CareApp - Version = 0.9
+2015-01-29 18:32:49,991 INFO  [main] app.CareApp - lua-startup => C:\dmccomas\projects\FSRL\open\tools\care\config\startup.lua
+2015-01-29 18:32:49,991 INFO  [main] app.CareApp - cfs-tlm-port => 1235
+2015-01-29 18:32:49,991 INFO  [main] app.CareApp - app-help => C:\dmccomas\projects\FSRL\open\tools\care\doc\index.html
+2015-01-29 18:32:49,991 INFO  [main] app.CareApp - ccfs-ip-address => 127.000.000.001
+2015-01-29 18:32:49,991 INFO  [main] app.CareApp - time-tick-ms => 500
+2015-01-29 18:32:49,991 INFO  [main] app.CareApp - core-tool-cmds => TIME:7,ES:4,ES:5,ES:7,ES:0
+2015-01-29 18:32:49,991 INFO  [main] app.CareApp - ccare-ip-address => 127.000.000.001
+2015-01-29 18:32:49,991 INFO  [main] app.CareApp - version => 0.9
+2015-01-29 18:32:49,991 INFO  [main] app.CareApp - care-ip-address => 192.168.007.001
+2015-01-29 18:32:49,991 INFO  [main] app.CareApp - cfe-file => C:\cygwin\home\dcmccom2\opensat\tmp\
+2015-01-29 18:32:49,991 INFO  [main] app.CareApp - cfs-cmd-port => 1234
+2015-01-29 18:32:49,991 INFO  [main] app.CareApp - cfe-help => C:\dmccomas\projects\GPM\Users Guide\b4_6\cfe\index.html
+2015-01-29 18:32:49,991 INFO  [main] app.CareApp - core-apps => ExecutiveService,TableService,EventService,TimeService,SoftwareBus,LabCmd,LabTlm,LabSch
+2015-01-29 18:32:49,991 INFO  [main] app.CareApp - cfs-ip-address => 192.168.007.002
+2015-01-29 18:32:50,006 INFO  [main] app.CareApp - user-apps => _template_,fwapp
+2015-01-29 18:32:50,162 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,162 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:32:50,162 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:32:50,162 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,178 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:32:50,178 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:32:50,178 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:32:50,178 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,178 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:32:50,178 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,178 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,178 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,178 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,178 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-01-29 18:32:50,179 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:32:50,179 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,179 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,257 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,257 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-01-29 18:32:50,257 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,257 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-01-29 18:32:50,257 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-01-29 18:32:50,257 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,257 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-01-29 18:32:50,257 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-01-29 18:32:50,257 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-01-29 18:32:50,288 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:32:50,288 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:32:50,288 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:32:50,288 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:32:50,288 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:32:50,288 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:32:50,288 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:32:50,288 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:32:50,288 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:32:50,288 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:32:50,288 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,288 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,366 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,366 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,366 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,397 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,397 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,397 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 16
+2015-01-29 18:32:50,460 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,460 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,460 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,460 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in ES
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in TBL
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in EVS
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in TIME
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - Found TIME
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - Found AppProxy
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - Found cmdAction
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - Found ES
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - Found AppProxy
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - Found cmdAction
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - Found ES
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - Found AppProxy
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - Found cmdAction
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - Found ES
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - Found AppProxy
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - Found cmdAction
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - Found ES
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - Found AppProxy
+2015-01-29 18:32:50,460 DEBUG [main] app.CareApp - Found cmdAction
+2015-01-29 18:32:50,538 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:50,538 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:32:51,444 INFO  [Thread-0] util.Scheduler - Scheduler thread started with tick=500, slotcnt=2
+2015-01-29 18:33:04,398 DEBUG [main] network.PktReader - PktReader: Created socket on port 1235, 0.0.0.0/0.0.0.0:1235, null
+2015-01-29 18:33:04,398 DEBUG [Thread-1] network.PktReader - PktReader: Start while loop
+2015-01-29 18:33:04,523 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in ES
+2015-01-29 18:33:04,523 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TBL
+2015-01-29 18:33:04,523 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in EVS
+2015-01-29 18:33:04,523 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TIME
+2015-01-29 18:33:04,523 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in SB
+2015-01-29 18:33:04,523 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABCMD
+2015-01-29 18:33:04,523 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABTLM
+2015-01-29 18:33:04,523 DEBUG [main] app.CareApp - Found LABTLM
+2015-01-29 18:33:04,523 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 16
+2015-01-29 18:58:32,911 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 15
+2015-01-29 18:58:32,958 INFO  [main] app.CareApp - Version = 0.9
+2015-01-29 18:58:32,958 INFO  [main] app.CareApp - lua-startup => C:\dmccomas\projects\FSRL\open\tools\care\config\startup.lua
+2015-01-29 18:58:32,958 INFO  [main] app.CareApp - cfs-tlm-port => 1235
+2015-01-29 18:58:32,958 INFO  [main] app.CareApp - app-help => C:\dmccomas\projects\FSRL\open\tools\care\doc\index.html
+2015-01-29 18:58:32,958 INFO  [main] app.CareApp - ccfs-ip-address => 127.000.000.001
+2015-01-29 18:58:32,958 INFO  [main] app.CareApp - time-tick-ms => 500
+2015-01-29 18:58:32,958 INFO  [main] app.CareApp - core-tool-cmds => TIME:7,ES:4,ES:5,ES:7,ES:0
+2015-01-29 18:58:32,958 INFO  [main] app.CareApp - ccare-ip-address => 127.000.000.001
+2015-01-29 18:58:32,958 INFO  [main] app.CareApp - version => 0.9
+2015-01-29 18:58:32,958 INFO  [main] app.CareApp - care-ip-address => 192.168.007.001
+2015-01-29 18:58:32,958 INFO  [main] app.CareApp - cfe-file => C:\cygwin\home\dcmccom2\opensat\tmp\
+2015-01-29 18:58:32,958 INFO  [main] app.CareApp - cfs-cmd-port => 1234
+2015-01-29 18:58:32,958 INFO  [main] app.CareApp - cfe-help => C:\dmccomas\projects\GPM\Users Guide\b4_6\cfe\index.html
+2015-01-29 18:58:32,958 INFO  [main] app.CareApp - core-apps => ExecutiveService,TableService,EventService,TimeService,SoftwareBus,LabCmd,LabTlm,LabSch
+2015-01-29 18:58:32,958 INFO  [main] app.CareApp - cfs-ip-address => 192.168.007.002
+2015-01-29 18:58:32,958 INFO  [main] app.CareApp - user-apps => _template_,fwapp
+2015-01-29 18:58:33,005 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:58:33,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:58:33,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:58:33,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:58:33,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:58:33,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:58:33,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,036 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,036 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,036 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-01-29 18:58:33,036 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:58:33,052 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,052 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,083 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,098 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-01-29 18:58:33,098 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,098 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-01-29 18:58:33,098 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-01-29 18:58:33,098 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,098 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-01-29 18:58:33,098 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-01-29 18:58:33,098 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-01-29 18:58:33,130 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:58:33,130 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:58:33,130 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:58:33,130 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:58:33,130 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:58:33,130 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:58:33,130 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:58:33,130 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:58:33,130 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:58:33,130 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-01-29 18:58:33,130 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,145 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,208 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,208 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,208 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,224 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,224 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,224 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 16
+2015-01-29 18:58:33,224 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,224 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,224 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,224 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,240 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in ES
+2015-01-29 18:58:33,240 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in TBL
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in EVS
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in TIME
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - Found TIME
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - Found AppProxy
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - Found cmdAction
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - Found ES
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - Found AppProxy
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - Found cmdAction
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - Found ES
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - Found AppProxy
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - Found cmdAction
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - Found ES
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - Found AppProxy
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - Found cmdAction
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - Found ES
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - Found AppProxy
+2015-01-29 18:58:33,255 DEBUG [main] app.CareApp - Found cmdAction
+2015-01-29 18:58:33,255 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,255 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-01-29 18:58:33,801 INFO  [Thread-0] util.Scheduler - Scheduler thread started with tick=500, slotcnt=2
+2015-01-29 18:58:40,197 DEBUG [main] network.PktReader - PktReader: Created socket on port 1235, 0.0.0.0/0.0.0.0:1235, null
+2015-01-29 18:58:40,197 DEBUG [Thread-1] network.PktReader - PktReader: Start while loop
+2015-01-29 18:58:40,573 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in ES
+2015-01-29 18:58:40,573 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TBL
+2015-01-29 18:58:40,573 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in EVS
+2015-01-29 18:58:40,573 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TIME
+2015-01-29 18:58:40,573 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in SB
+2015-01-29 18:58:40,573 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABCMD
+2015-01-29 18:58:40,573 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABTLM
+2015-01-29 18:58:40,573 DEBUG [main] app.CareApp - Found LABTLM
+2015-01-29 18:58:40,573 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 16
+2015-01-29 19:03:34,881 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in ES
+2015-01-29 19:03:34,881 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TBL
+2015-01-29 19:03:34,881 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in EVS
+2015-01-29 19:03:34,881 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TIME
+2015-01-29 19:03:34,881 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in SB
+2015-01-29 19:03:34,881 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABCMD
+2015-01-29 19:03:34,881 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABTLM
+2015-01-29 19:03:34,881 DEBUG [main] app.CareApp - Found LABTLM
+2015-01-29 19:03:34,928 DEBUG [main] app.CareApp - createMsgIdStrArray() adding 0xf03-_TEMPLATE_: Housekeeping
+2015-01-29 19:03:34,928 DEBUG [main] app.CareApp - createMsgIdStrArray() adding 0xf02-FW_APP: Fault Detectors
+2015-01-29 19:03:34,928 DEBUG [main] app.CareApp - createMsgIdStrArray() adding 0xf00-FW_APP: Housekeeping
+2015-01-29 19:03:34,928 DEBUG [main] app.CareApp - createMsgIdStrArray() adding 0xf01-FW_APP: Vector Data
+2015-02-06 17:05:50,807 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 15
+2015-02-06 17:05:50,869 INFO  [main] app.CareApp - Version = 0.9
+2015-02-06 17:05:50,869 INFO  [main] app.CareApp - lua-startup => C:\dmccomas\projects\FSRL\open\tools\care\config\startup.lua
+2015-02-06 17:05:50,869 INFO  [main] app.CareApp - cfs-tlm-port => 1235
+2015-02-06 17:05:50,869 INFO  [main] app.CareApp - app-help => C:\dmccomas\projects\FSRL\open\tools\care\doc\index.html
+2015-02-06 17:05:50,869 INFO  [main] app.CareApp - ccfs-ip-address => 127.000.000.001
+2015-02-06 17:05:50,869 INFO  [main] app.CareApp - time-tick-ms => 500
+2015-02-06 17:05:50,869 INFO  [main] app.CareApp - core-tool-cmds => TIME:7,ES:4,ES:5,ES:7,ES:0
+2015-02-06 17:05:50,869 INFO  [main] app.CareApp - ccare-ip-address => 127.000.000.001
+2015-02-06 17:05:50,869 INFO  [main] app.CareApp - version => 0.9
+2015-02-06 17:05:50,869 INFO  [main] app.CareApp - care-ip-address => 192.168.007.001
+2015-02-06 17:05:50,869 INFO  [main] app.CareApp - cfe-file => C:\cygwin\home\dcmccom2\opensat\tmp\
+2015-02-06 17:05:50,869 INFO  [main] app.CareApp - cfs-cmd-port => 1234
+2015-02-06 17:05:50,869 INFO  [main] app.CareApp - cfe-help => C:\dmccomas\projects\GPM\Users Guide\b4_6\cfe\index.html
+2015-02-06 17:05:50,869 INFO  [main] app.CareApp - core-apps => ExecutiveService,TableService,EventService,TimeService,SoftwareBus,LabCmd,LabTlm,LabSch
+2015-02-06 17:05:50,869 INFO  [main] app.CareApp - cfs-ip-address => 192.168.007.002
+2015-02-06 17:05:50,869 INFO  [main] app.CareApp - user-apps => _template_,fwapp
+2015-02-06 17:05:50,932 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:50,932 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:05:50,932 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:05:50,932 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:50,932 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:05:50,947 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:05:50,947 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:05:50,947 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:50,947 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:05:50,947 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:50,947 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:50,947 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:50,947 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:50,963 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:05:50,963 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:05:50,963 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:50,963 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:51,010 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:51,010 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:05:51,010 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:51,010 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:05:51,010 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:05:51,010 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:51,010 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:05:51,010 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:05:51,010 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:05:51,041 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:05:51,041 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:05:51,041 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:05:51,041 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:05:51,041 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:05:51,041 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:05:51,056 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:05:51,056 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:05:51,056 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:05:51,056 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:05:51,056 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:51,056 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:51,134 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:51,134 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:51,134 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:51,166 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:51,166 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:51,166 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 16
+2015-02-06 17:05:51,181 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:51,181 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:51,181 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:51,181 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in ES
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in TBL
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in EVS
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in TIME
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - Found TIME
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:05:51,181 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:05:51,197 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:51,197 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:05:51,839 INFO  [Thread-0] util.Scheduler - Scheduler thread started with tick=500, slotcnt=2
+2015-02-06 17:05:56,254 DEBUG [main] network.PktReader - PktReader: Created socket on port 1235, 0.0.0.0/0.0.0.0:1235, null
+2015-02-06 17:05:56,254 DEBUG [Thread-1] network.PktReader - PktReader: Start while loop
+2015-02-06 17:05:56,562 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in ES
+2015-02-06 17:05:56,562 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TBL
+2015-02-06 17:05:56,562 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in EVS
+2015-02-06 17:05:56,562 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TIME
+2015-02-06 17:05:56,562 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in SB
+2015-02-06 17:05:56,562 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABCMD
+2015-02-06 17:05:56,562 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABTLM
+2015-02-06 17:05:56,562 DEBUG [main] app.CareApp - Found LABTLM
+2015-02-06 17:05:56,562 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 16
+2015-02-06 17:06:43,817 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 15
+2015-02-06 17:06:43,848 INFO  [main] app.CareApp - Version = 0.9
+2015-02-06 17:06:43,848 INFO  [main] app.CareApp - lua-startup => C:\dmccomas\projects\FSRL\open\tools\care\config\startup.lua
+2015-02-06 17:06:43,848 INFO  [main] app.CareApp - cfs-tlm-port => 1235
+2015-02-06 17:06:43,848 INFO  [main] app.CareApp - app-help => C:\dmccomas\projects\FSRL\open\tools\care\doc\index.html
+2015-02-06 17:06:43,848 INFO  [main] app.CareApp - ccfs-ip-address => 127.000.000.001
+2015-02-06 17:06:43,848 INFO  [main] app.CareApp - time-tick-ms => 500
+2015-02-06 17:06:43,848 INFO  [main] app.CareApp - core-tool-cmds => TIME:7,ES:4,ES:5,ES:7,ES:0
+2015-02-06 17:06:43,848 INFO  [main] app.CareApp - ccare-ip-address => 127.000.000.001
+2015-02-06 17:06:43,848 INFO  [main] app.CareApp - version => 0.9
+2015-02-06 17:06:43,848 INFO  [main] app.CareApp - care-ip-address => 192.168.007.001
+2015-02-06 17:06:43,848 INFO  [main] app.CareApp - cfe-file => C:\cygwin\home\dcmccom2\opensat\tmp\
+2015-02-06 17:06:43,848 INFO  [main] app.CareApp - cfs-cmd-port => 1234
+2015-02-06 17:06:43,848 INFO  [main] app.CareApp - cfe-help => C:\dmccomas\projects\GPM\Users Guide\b4_6\cfe\index.html
+2015-02-06 17:06:43,848 INFO  [main] app.CareApp - core-apps => ExecutiveService,TableService,EventService,TimeService,SoftwareBus,LabCmd,LabTlm,LabSch
+2015-02-06 17:06:43,848 INFO  [main] app.CareApp - cfs-ip-address => 192.168.007.002
+2015-02-06 17:06:43,848 INFO  [main] app.CareApp - user-apps => _template_,fwapp
+2015-02-06 17:06:43,911 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:43,911 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:06:43,926 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:06:43,926 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:43,926 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:06:43,926 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:06:43,926 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:06:43,926 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:43,926 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:06:43,926 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:43,926 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:43,942 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:43,942 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:43,942 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:06:43,942 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:06:43,942 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:43,957 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:43,973 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:43,989 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:06:43,989 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:43,989 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:06:43,989 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:06:43,989 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:43,989 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:06:43,989 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:06:43,989 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:06:44,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:06:44,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:06:44,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:06:44,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:06:44,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:06:44,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:06:44,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:06:44,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:06:44,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:06:44,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:06:44,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:44,020 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:44,082 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:44,082 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:44,082 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:44,113 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:44,113 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:44,129 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 16
+2015-02-06 17:06:44,129 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:44,129 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:44,129 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:44,129 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:44,129 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in ES
+2015-02-06 17:06:44,129 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in TBL
+2015-02-06 17:06:44,129 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in EVS
+2015-02-06 17:06:44,129 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in TIME
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - Found TIME
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:06:44,145 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:06:44,160 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:44,160 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:06:44,753 INFO  [Thread-0] util.Scheduler - Scheduler thread started with tick=500, slotcnt=2
+2015-02-06 17:06:56,039 DEBUG [main] network.PktReader - PktReader: Created socket on port 1235, 0.0.0.0/0.0.0.0:1235, null
+2015-02-06 17:06:56,039 DEBUG [Thread-1] network.PktReader - PktReader: Start while loop
+2015-02-06 17:06:56,711 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in ES
+2015-02-06 17:06:56,711 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TBL
+2015-02-06 17:06:56,711 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in EVS
+2015-02-06 17:06:56,711 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TIME
+2015-02-06 17:06:56,711 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in SB
+2015-02-06 17:06:56,711 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABCMD
+2015-02-06 17:06:56,711 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABTLM
+2015-02-06 17:06:56,711 DEBUG [main] app.CareApp - Found LABTLM
+2015-02-06 17:06:56,711 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 16
+2015-02-06 17:13:24,570 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 15
+2015-02-06 17:13:24,601 INFO  [main] app.CareApp - Version = 0.9
+2015-02-06 17:13:24,601 INFO  [main] app.CareApp - lua-startup => C:\dmccomas\projects\FSRL\open\tools\care\config\startup.lua
+2015-02-06 17:13:24,601 INFO  [main] app.CareApp - cfs-tlm-port => 1235
+2015-02-06 17:13:24,601 INFO  [main] app.CareApp - app-help => C:\dmccomas\projects\FSRL\open\tools\care\doc\index.html
+2015-02-06 17:13:24,601 INFO  [main] app.CareApp - ccfs-ip-address => 127.000.000.001
+2015-02-06 17:13:24,601 INFO  [main] app.CareApp - time-tick-ms => 500
+2015-02-06 17:13:24,601 INFO  [main] app.CareApp - core-tool-cmds => TIME:7,ES:4,ES:5,ES:7,ES:0
+2015-02-06 17:13:24,601 INFO  [main] app.CareApp - ccare-ip-address => 127.000.000.001
+2015-02-06 17:13:24,601 INFO  [main] app.CareApp - version => 0.9
+2015-02-06 17:13:24,601 INFO  [main] app.CareApp - care-ip-address => 192.168.007.001
+2015-02-06 17:13:24,601 INFO  [main] app.CareApp - cfe-file => C:\cygwin\home\dcmccom2\opensat\tmp\
+2015-02-06 17:13:24,601 INFO  [main] app.CareApp - cfs-cmd-port => 1234
+2015-02-06 17:13:24,601 INFO  [main] app.CareApp - cfe-help => C:\dmccomas\projects\GPM\Users Guide\b4_6\cfe\index.html
+2015-02-06 17:13:24,601 INFO  [main] app.CareApp - core-apps => ExecutiveService,TableService,EventService,TimeService,SoftwareBus,LabCmd,LabTlm,LabSch
+2015-02-06 17:13:24,601 INFO  [main] app.CareApp - cfs-ip-address => 192.168.007.002
+2015-02-06 17:13:24,601 INFO  [main] app.CareApp - user-apps => _template_,fwapp
+2015-02-06 17:13:24,663 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,663 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:13:24,663 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:13:24,663 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,679 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:13:24,679 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:13:24,679 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:13:24,679 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,679 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:13:24,679 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,679 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,679 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,679 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,695 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:13:24,695 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:13:24,695 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,695 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,741 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,741 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:13:24,741 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,741 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:13:24,741 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:13:24,741 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,741 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:13:24,741 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:13:24,741 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:13:24,773 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:13:24,773 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:13:24,773 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:13:24,773 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:13:24,773 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:13:24,773 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:13:24,773 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:13:24,773 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:13:24,773 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:13:24,773 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:13:24,773 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,773 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,835 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,835 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,835 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,866 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,866 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,866 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 16
+2015-02-06 17:13:24,882 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,882 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,882 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,882 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in ES
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in TBL
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in EVS
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in TIME
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - Found TIME
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:13:24,882 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:13:24,897 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:24,897 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:13:25,398 INFO  [Thread-0] util.Scheduler - Scheduler thread started with tick=500, slotcnt=2
+2015-02-06 17:13:36,604 DEBUG [main] network.PktReader - PktReader: Created socket on port 1235, 0.0.0.0/0.0.0.0:1235, null
+2015-02-06 17:13:36,619 DEBUG [Thread-1] network.PktReader - PktReader: Start while loop
+2015-02-06 17:13:36,698 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in ES
+2015-02-06 17:13:36,698 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TBL
+2015-02-06 17:13:36,698 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in EVS
+2015-02-06 17:13:36,698 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TIME
+2015-02-06 17:13:36,698 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in SB
+2015-02-06 17:13:36,698 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABCMD
+2015-02-06 17:13:36,698 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABTLM
+2015-02-06 17:13:36,698 DEBUG [main] app.CareApp - Found LABTLM
+2015-02-06 17:13:36,698 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 16
+2015-02-06 17:14:08,846 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 15
+2015-02-06 17:14:08,893 INFO  [main] app.CareApp - Version = 0.9
+2015-02-06 17:14:08,893 INFO  [main] app.CareApp - lua-startup => C:\dmccomas\projects\FSRL\open\tools\care\config\startup.lua
+2015-02-06 17:14:08,893 INFO  [main] app.CareApp - cfs-tlm-port => 1235
+2015-02-06 17:14:08,893 INFO  [main] app.CareApp - app-help => C:\dmccomas\projects\FSRL\open\tools\care\doc\index.html
+2015-02-06 17:14:08,893 INFO  [main] app.CareApp - ccfs-ip-address => 127.000.000.001
+2015-02-06 17:14:08,893 INFO  [main] app.CareApp - time-tick-ms => 500
+2015-02-06 17:14:08,893 INFO  [main] app.CareApp - core-tool-cmds => TIME:7,ES:4,ES:5,ES:7,ES:0
+2015-02-06 17:14:08,893 INFO  [main] app.CareApp - ccare-ip-address => 127.000.000.001
+2015-02-06 17:14:08,893 INFO  [main] app.CareApp - version => 0.9
+2015-02-06 17:14:08,893 INFO  [main] app.CareApp - care-ip-address => 192.168.007.001
+2015-02-06 17:14:08,893 INFO  [main] app.CareApp - cfe-file => C:\cygwin\home\dcmccom2\opensat\tmp\
+2015-02-06 17:14:08,893 INFO  [main] app.CareApp - cfs-cmd-port => 1234
+2015-02-06 17:14:08,893 INFO  [main] app.CareApp - cfe-help => C:\dmccomas\projects\GPM\Users Guide\b4_6\cfe\index.html
+2015-02-06 17:14:08,893 INFO  [main] app.CareApp - core-apps => ExecutiveService,TableService,EventService,TimeService,SoftwareBus,LabCmd,LabTlm,LabSch
+2015-02-06 17:14:08,893 INFO  [main] app.CareApp - cfs-ip-address => 192.168.007.002
+2015-02-06 17:14:08,893 INFO  [main] app.CareApp - user-apps => _template_,fwapp
+2015-02-06 17:14:08,957 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:08,957 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:14:08,957 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:14:08,957 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:08,972 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:14:08,972 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:14:08,972 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:14:08,972 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:08,972 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:14:08,972 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:08,972 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:08,973 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:08,973 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:08,973 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:14:08,973 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:14:08,989 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:09,004 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:09,051 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:09,051 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:14:09,051 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:09,051 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:14:09,051 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:14:09,051 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:09,051 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:14:09,051 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:14:09,051 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:14:09,082 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:14:09,082 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:14:09,082 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:14:09,082 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:14:09,082 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:14:09,082 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:14:09,082 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:14:09,082 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:14:09,082 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:14:09,082 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:14:09,082 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:09,082 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:09,160 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:09,160 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:09,160 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:09,192 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:09,192 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:09,192 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 16
+2015-02-06 17:14:09,207 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:09,207 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:09,207 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:09,207 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in ES
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in TBL
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in EVS
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in TIME
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - Found TIME
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:14:09,207 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:14:09,223 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:14:09,223 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:09,223 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:14:09,770 INFO  [Thread-0] util.Scheduler - Scheduler thread started with tick=500, slotcnt=2
+2015-02-06 17:14:14,297 DEBUG [main] network.PktReader - PktReader: Created socket on port 1235, 0.0.0.0/0.0.0.0:1235, null
+2015-02-06 17:14:14,312 DEBUG [Thread-1] network.PktReader - PktReader: Start while loop
+2015-02-06 17:14:14,439 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in ES
+2015-02-06 17:14:14,439 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TBL
+2015-02-06 17:14:14,439 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in EVS
+2015-02-06 17:14:14,439 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TIME
+2015-02-06 17:14:14,439 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in SB
+2015-02-06 17:14:14,439 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABCMD
+2015-02-06 17:14:14,439 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABTLM
+2015-02-06 17:14:14,439 DEBUG [main] app.CareApp - Found LABTLM
+2015-02-06 17:14:14,439 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 16
+2015-02-06 17:28:53,234 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in ES
+2015-02-06 17:28:53,234 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TBL
+2015-02-06 17:28:53,234 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in EVS
+2015-02-06 17:28:53,234 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TIME
+2015-02-06 17:28:53,234 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in SB
+2015-02-06 17:28:53,234 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABCMD
+2015-02-06 17:28:53,234 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABTLM
+2015-02-06 17:28:53,234 DEBUG [main] app.CareApp - Found LABTLM
+2015-02-06 17:28:53,234 DEBUG [main] app.CareApp - createMsgIdStrArray() adding 0xf03-_TEMPLATE_: Housekeeping
+2015-02-06 17:28:53,234 DEBUG [main] app.CareApp - createMsgIdStrArray() adding 0xf02-FW_APP: Fault Detectors
+2015-02-06 17:28:53,234 DEBUG [main] app.CareApp - createMsgIdStrArray() adding 0xf00-FW_APP: Housekeeping
+2015-02-06 17:28:53,234 DEBUG [main] app.CareApp - createMsgIdStrArray() adding 0xf01-FW_APP: Vector Data
+2015-02-06 17:45:28,589 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 15
+2015-02-06 17:45:28,636 INFO  [main] app.CareApp - Version = 0.9
+2015-02-06 17:45:28,636 INFO  [main] app.CareApp - lua-startup => C:\dmccomas\projects\FSRL\open\tools\care\config\startup.lua
+2015-02-06 17:45:28,636 INFO  [main] app.CareApp - cfs-tlm-port => 1235
+2015-02-06 17:45:28,636 INFO  [main] app.CareApp - app-help => C:\dmccomas\projects\FSRL\open\tools\care\doc\index.html
+2015-02-06 17:45:28,636 INFO  [main] app.CareApp - ccfs-ip-address => 127.000.000.001
+2015-02-06 17:45:28,636 INFO  [main] app.CareApp - time-tick-ms => 500
+2015-02-06 17:45:28,636 INFO  [main] app.CareApp - core-tool-cmds => TIME:7,ES:4,ES:5,ES:7,ES:0
+2015-02-06 17:45:28,636 INFO  [main] app.CareApp - ccare-ip-address => 127.000.000.001
+2015-02-06 17:45:28,636 INFO  [main] app.CareApp - version => 0.9
+2015-02-06 17:45:28,636 INFO  [main] app.CareApp - care-ip-address => 192.168.007.001
+2015-02-06 17:45:28,636 INFO  [main] app.CareApp - cfe-file => C:\cygwin\home\dcmccom2\opensat\tmp\
+2015-02-06 17:45:28,636 INFO  [main] app.CareApp - cfs-cmd-port => 1234
+2015-02-06 17:45:28,636 INFO  [main] app.CareApp - cfe-help => C:\dmccomas\projects\GPM\Users Guide\b4_6\cfe\index.html
+2015-02-06 17:45:28,636 INFO  [main] app.CareApp - core-apps => ExecutiveService,TableService,EventService,TimeService,SoftwareBus,LabCmd,LabTlm,LabSch
+2015-02-06 17:45:28,636 INFO  [main] app.CareApp - cfs-ip-address => 192.168.007.002
+2015-02-06 17:45:28,636 INFO  [main] app.CareApp - user-apps => _template_,fwapp
+2015-02-06 17:45:28,699 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,699 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:45:28,699 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:45:28,699 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,714 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:45:28,714 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:45:28,714 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:45:28,714 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,714 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:45:28,714 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,714 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,730 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,730 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,730 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:45:28,730 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:45:28,730 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,730 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,761 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,761 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:45:28,761 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,761 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:45:28,761 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:45:28,761 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,777 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:45:28,777 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:45:28,777 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 17:45:28,792 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:45:28,792 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:45:28,792 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:45:28,792 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:45:28,792 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:45:28,792 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:45:28,808 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:45:28,808 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:45:28,808 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:45:28,808 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 17:45:28,808 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,808 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,870 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,886 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,886 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,901 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,901 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,901 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 16
+2015-02-06 17:45:28,917 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,917 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,917 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,917 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in ES
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in TBL
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in EVS
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in TIME
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - Found TIME
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 17:45:28,917 DEBUG [main] app.CareApp - Found ES
+2015-02-06 17:45:28,933 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 17:45:28,933 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 17:45:28,948 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:28,948 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 17:45:29,464 INFO  [Thread-0] util.Scheduler - Scheduler thread started with tick=500, slotcnt=2
+2015-02-06 17:45:33,305 DEBUG [main] network.PktReader - PktReader: Created socket on port 1235, 0.0.0.0/0.0.0.0:1235, null
+2015-02-06 17:45:33,320 DEBUG [Thread-1] network.PktReader - PktReader: Start while loop
+2015-02-06 17:45:33,446 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in ES
+2015-02-06 17:45:33,446 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TBL
+2015-02-06 17:45:33,446 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in EVS
+2015-02-06 17:45:33,446 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TIME
+2015-02-06 17:45:33,446 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in SB
+2015-02-06 17:45:33,446 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABCMD
+2015-02-06 17:45:33,446 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABTLM
+2015-02-06 17:45:33,446 DEBUG [main] app.CareApp - Found LABTLM
+2015-02-06 17:45:33,446 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 16
+2015-02-06 18:14:39,857 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 15
+2015-02-06 18:14:39,888 INFO  [main] app.CareApp - Version = 0.9
+2015-02-06 18:14:39,888 INFO  [main] app.CareApp - lua-startup => C:\dmccomas\projects\FSRL\open\tools\care\config\startup.lua
+2015-02-06 18:14:39,888 INFO  [main] app.CareApp - cfs-tlm-port => 1235
+2015-02-06 18:14:39,888 INFO  [main] app.CareApp - app-help => C:\dmccomas\projects\FSRL\open\tools\care\doc\index.html
+2015-02-06 18:14:39,888 INFO  [main] app.CareApp - ccfs-ip-address => 127.000.000.001
+2015-02-06 18:14:39,888 INFO  [main] app.CareApp - time-tick-ms => 500
+2015-02-06 18:14:39,888 INFO  [main] app.CareApp - core-tool-cmds => TIME:7,ES:4,ES:5,ES:7,ES:0
+2015-02-06 18:14:39,888 INFO  [main] app.CareApp - ccare-ip-address => 127.000.000.001
+2015-02-06 18:14:39,888 INFO  [main] app.CareApp - version => 0.9
+2015-02-06 18:14:39,888 INFO  [main] app.CareApp - care-ip-address => 192.168.007.001
+2015-02-06 18:14:39,888 INFO  [main] app.CareApp - cfe-file => C:\cygwin\home\dcmccom2\opensat\tmp\
+2015-02-06 18:14:39,888 INFO  [main] app.CareApp - cfs-cmd-port => 1234
+2015-02-06 18:14:39,888 INFO  [main] app.CareApp - cfe-help => C:\dmccomas\projects\GPM\Users Guide\b4_6\cfe\index.html
+2015-02-06 18:14:39,888 INFO  [main] app.CareApp - core-apps => ExecutiveService,TableService,EventService,TimeService,SoftwareBus,LabCmd,LabTlm,LabSch
+2015-02-06 18:14:39,888 INFO  [main] app.CareApp - cfs-ip-address => 192.168.007.002
+2015-02-06 18:14:39,888 INFO  [main] app.CareApp - user-apps => _template_,fwapp
+2015-02-06 18:14:39,959 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:39,959 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 18:14:39,959 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 18:14:39,959 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:39,959 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 18:14:39,959 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 18:14:39,959 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 18:14:39,974 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:39,974 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 18:14:39,974 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:39,974 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:39,974 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:39,974 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:39,990 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 18:14:39,990 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 18:14:39,990 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:39,990 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:40,021 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:40,021 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 18:14:40,021 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:40,021 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 18:14:40,021 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 18:14:40,021 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:40,021 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 18:14:40,021 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 18:14:40,021 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 38
+2015-02-06 18:14:40,038 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 18:14:40,038 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 18:14:40,038 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 18:14:40,038 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 18:14:40,038 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 18:14:40,038 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 18:14:40,038 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 18:14:40,038 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 18:14:40,038 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 18:14:40,038 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 20
+2015-02-06 18:14:40,038 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:40,038 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:40,104 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:40,105 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:40,106 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:40,140 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:40,141 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:40,142 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 16
+2015-02-06 18:14:40,176 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:40,176 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:40,176 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:40,176 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in ES
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in TBL
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in EVS
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - getFswAppProxy() looking for TIME in TIME
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - Found TIME
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - Found ES
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - Found ES
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - Found ES
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - getFswAppProxy() looking for ES in ES
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - Found ES
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - Found AppProxy
+2015-02-06 18:14:40,176 DEBUG [main] app.CareApp - Found cmdAction
+2015-02-06 18:14:40,191 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:40,191 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 64
+2015-02-06 18:14:40,742 INFO  [Thread-0] util.Scheduler - Scheduler thread started with tick=500, slotcnt=2
+2015-02-06 18:14:44,764 DEBUG [main] network.PktReader - PktReader: Created socket on port 1235, 0.0.0.0/0.0.0.0:1235, null
+2015-02-06 18:14:44,765 DEBUG [Thread-1] network.PktReader - PktReader: Start while loop
+2015-02-06 18:14:44,874 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in ES
+2015-02-06 18:14:44,874 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TBL
+2015-02-06 18:14:44,874 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in EVS
+2015-02-06 18:14:44,874 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in TIME
+2015-02-06 18:14:44,874 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in SB
+2015-02-06 18:14:44,874 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABCMD
+2015-02-06 18:14:44,874 DEBUG [main] app.CareApp - getFswAppProxy() looking for LABTLM in LABTLM
+2015-02-06 18:14:44,874 DEBUG [main] app.CareApp - Found LABTLM
+2015-02-06 18:14:44,874 DEBUG [main] fsw.CmdStrParam - CmdStrParam::loadByteArray with NumBytes = 16
