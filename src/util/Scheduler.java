@@ -84,8 +84,8 @@ public class Scheduler {
          public void run() {
             logger.info("Scheduler thread started with tick="+ tick + ", slotcnt="+slotCnt);
             while (true) {
-               Display.getDefault().asyncExec(new Runnable() {
-                  public void run() {
+               //Display.getDefault().asyncExec(new Runnable() {
+               //   public void run() {
                      try {
                         /*
                          * A couple of notes about this logic:
@@ -93,6 +93,7 @@ public class Scheduler {
                          *    count reflects the actual slot
                          * 2. currSlot is not initially set to -1 to delay the first 1Hz from occurring on the 
                          *    first execution cycle
+                         * 3. The thread sleep time does not take into account the elapsed time of processScheduleList() 
                          */
                         logger.trace("Start tick thread loop. currSlot = " + currSlot);
                         currSlot++;
@@ -104,7 +105,7 @@ public class Scheduler {
                      
                         processScheduleList();
                         Thread.sleep(tick);
-   
+                        
                      } // End try
                      catch (Exception e) {
                         
@@ -112,12 +113,13 @@ public class Scheduler {
                         e.printStackTrace();
                         
                      } // End catch
-                  } // End run()
-               });
+                 // } // End run()
+                 //});
             }// End while true
          } // End run()
       });
       
+      thread.setName("Scheduler");
       thread.start();
       
    } // End startThread()
@@ -250,7 +252,7 @@ public class Scheduler {
          offsetSlot = (item.getOffset() % 1000) /tick;
       }
       
-      for (int i=0; i <executionSlot.length; i++) {
+      for (int i=0; i < executionSlot.length; i++) {
          executionSlot[i] = false;
       }
       
@@ -268,7 +270,7 @@ public class Scheduler {
       // TODO - Add logic to schedule long period items
 
       logger.trace("SchedulableItem: Add item " + name + " Offset slot = " + offsetSlot + ", Execution slots = ");
-      for (int i=0; i <executionSlot.length; i++) {
+      for (int i=0; i < executionSlot.length; i++) {
          logger.trace("   executionSlot["+i+"] = " + executionSlot[i]);
       }
       
@@ -309,7 +311,7 @@ public class Scheduler {
 
 } // End class ScheduleItem
 
-} // End Class scheduler
+} // End Class Scheduler
 
 
  

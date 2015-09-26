@@ -35,6 +35,7 @@ public class FswTlmNetwork implements TlmPktEventInterface {
       pktInput = new PktReader(ipAddress, tlmPort, this);
 
       pktInputThread = new Thread(pktInput);
+      pktInputThread.setName("PktReader");
       pktInputThread.start();
 
    } // End FswTlmNetwork()

@@ -171,14 +171,15 @@ public class FswAppProxy {
       
       CmdAction cmdAction = null;
       
-      logger.trace("getCmdAction() for " + fswXmlApp.getName() + ", actionCmd.length = " + actionCmd.length);
+      logger.debug("getCmdAction() for " + fswXmlApp.getName() + ", actionCmd.length = " + actionCmd.length);
       for (int i=0; i < actionCmd.length; i++) {
          
          // actonCmd is a sparse array so don't break on a null entry
          if (actionCmd[i] != null) {  
-            logger.trace("getCmdAction() Index = " + i + ", FC = "+ actionCmd[i].getFuncCode());
+            logger.debug("getCmdAction() Index = " + i + ", FC = "+ actionCmd[i].getFuncCode());
             if (actionCmd[i].getFuncCode() == FuncCode) {
                cmdAction = actionCmd[i];
+               logger.debug("CmdAction " + i + " matches. Text = " + actionCmd[i].getText());
                break;
             }
          }

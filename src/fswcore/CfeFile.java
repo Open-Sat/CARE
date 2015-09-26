@@ -108,7 +108,7 @@ public abstract class CfeFile {
    protected String[] hdrValStrArray;
    
    static public String[] hdrLblStrArray = {"File Type", "File Subtype", "Length", "Spacecraft ID", "Processor ID", "Applicaiton ID",
-                                            "Seconds", "Subseconcds", "Decsription"};
+                                            "Seconds", "Subseconds", "Decsription"};
    
    /** Store file contents */
    protected byte[] fileByteArray; 

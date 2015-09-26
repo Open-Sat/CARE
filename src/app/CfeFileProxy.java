@@ -205,7 +205,7 @@ public class CfeFileProxy
        public void run() {
 
           logger.trace("CfeFileProxy Action: Creating " + appProxy.getFswXmlApp().getName() + "'s " + defFileName);
-          StatusMsg statusMsg = new StatusMsg(StatusMsg.Type.ERROR, CARE.STR_UNDEFINED);
+          final StatusMsg statusMsg = new StatusMsg(StatusMsg.Type.ERROR, CARE.STR_UNDEFINED);
 
           // TODO - Provide mechanism to override the default
           // Send the command to get the file
@@ -214,37 +214,38 @@ public class CfeFileProxy
              if (cmdWriter != null) {
                 cmdWriter.sendCmd(cmd.getCcsdsPkt());   
                 // Provide time for file to be written and transferred
-                // TODO - This should be event driven, i.e. continue after confirm file written
-                /* This didn'twork. Get event message saying can't write the file and I think it's due to file being opened
-                 * by the next line of code. The event message seems to appear after this times out which may be a GUI update 
-                 * synchronization issue and not a file already open issue. 
-                try {
-                   Thread.sleep(3000);
-                } catch(InterruptedException ex) {
-                   Thread.currentThread().interrupt();
-                }
-                */
-                if (cfeFile.formatDataStrings(defFileName)) {
-                   statusMsg.setType(StatusMsg.Type.INFO);
-                   statusMsg.setText("Sent " + appProxy.getFswXmlApp().getName() + "'s command function code " + funcCode+ ". Opening dialog to display the file."); 
-                   CfeFileDialog cfeFileDialog = new CfeFileDialog(guiShell, cfeFile);
-                   cfeFileDialog.open();
-                }
-                else {
-                   statusMsg.setText("Error opening " + defFileName + ". The directory for cFE files may be incorrect or the file may not have been transferred."); 
-                }
+                // TODO - This should be event driven, i.e. continue after confirm file written. Use file or event msg? Also need TFTP
+                Display.getDefault().timerExec(3000, new Runnable() {
+
+                    public void run() {
+
+                        if (cfeFile.formatDataStrings(defFileName)) {
+                            statusMsg.setType(StatusMsg.Type.INFO);
+                            statusMsg.setText("Sent " + appProxy.getFswXmlApp().getName() + "'s command function code " + funcCode+ ". Opening dialog to display the file."); 
+                            CfeFileDialog cfeFileDialog = new CfeFileDialog(guiShell, cfeFile);
+                            cfeFileDialog.open();
+                         }
+                         else {
+                            statusMsg.setText("Error opening " + defFileName + ". The directory for cFE files may be incorrect or the file may not have been transferred."); 
+                         }
+                        proxyStatusMsgQ.add(statusMsg);
+
+                    } // End run()
+
+                }); // End timerExec()
              }
              else {
                 logger.error("CfeFileProxy Action: cmdWriter null for " + appProxy.getFswXmlApp().getName() + "'s command for function code " + funcCode);
                 statusMsg.setText("Error sending " + appProxy.getFswXmlApp().getName() + "'s command for function code " + funcCode+ ". Verify connection to CFS."); 
+                proxyStatusMsgQ.add(statusMsg);
              }
-          }
+          } // End if cmd != null
           else {
              logger.trace("CfeFileProxy Action: Couldn't find " + appProxy.getFswXmlApp().getName() + "'s command for function code " + funcCode);
              statusMsg.setText("Error sending " + appProxy.getFswXmlApp().getName() + "'s command for function code " + funcCode+ ". Commannd nto found. Verify application's XML definitions.");
+             proxyStatusMsgQ.add(statusMsg);
           }
 
-          proxyStatusMsgQ.add(statusMsg);
         
        } // End run()
        

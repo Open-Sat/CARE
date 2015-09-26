@@ -1,12 +1,13 @@
 package app;
 
-import ccsds.*;   
+import ccsds.*;      
 import curval.*;
 import network.*;
 import fsw.CmdPkt;
 import fsw.ExApp;
 import fswcore.EvsApp;
 import fswcore.ToLabApp;
+import fswcore.TfApp;
 import gui.*;
 import util.*;
 
@@ -15,6 +16,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.io.File;
 import java.io.FileInputStream;
 
 import org.eclipse.jface.layout.GridDataFactory;
@@ -35,8 +37,6 @@ import org.eclipse.swt.events.*;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.*;
-import org.eclipse.swt.widgets.ToolItem;
-
 import org.apache.log4j.Logger;
 
 /**
@@ -72,7 +72,7 @@ import org.apache.log4j.Logger;
  * <li>TODO - Make a single definition for data types used in Java and XML or at least use CARE constants as a single reference</li>
  * <li>TODO - Is an open/active tlm page list needed? Maybe not since simple tool.</li>
  * <li>TODO - Graceful shutdown, cleanup threads when CARE closed</li>
- * <li>TODO - Add TFTP and integrated text file displays, Fix delay problem. automated dump file commands fail</li>
+ * <li>TODO - Add  and integrated text file displays, Fix delay problem. automated dump file commands fail</li>
  * <li>TODO - Enhance colors. Establish common look and feel</li>
  * <li>TODO - Add JUnit, automatic regression testing, continuous integration. Put framework in place before OS</a></li>
  * <li>TODO - Add Fix version number in prologues once put on GIT</a></li>
@@ -115,6 +115,8 @@ public class CareApp extends ApplicationWindow {
    
    private Action actionConnectToCFS;
    private Action actionManageToPkts;
+   private Action actionGetFileFromCFS;
+   private Action actionPutFileToCFS;
    private Action actionExit;
 
    private Action actionDisplayNetworkStatus;
@@ -190,6 +192,12 @@ public class CareApp extends ApplicationWindow {
     */
    LuaScriptEngine Lua;
    
+   /*
+    * TFTP Server
+    */
+   
+   TFTPServer TftpServer;
+   
    /***************************************************************************
     ** 
     ** Application Management
@@ -231,6 +239,10 @@ public class CareApp extends ApplicationWindow {
          logger.trace("Loaded property file: " + propFile);
          propConfig[2] = midConfig;
       
+         TftpServer = new TFTPServer(new File(appConfig.getProperty(CARE.PROP_APP_FILE_SERVER)),  
+                      new File(appConfig.getProperty(CARE.PROP_APP_FILE_SERVER)), 
+                      69, TFTPServer.Mode.GET_AND_PUT);
+
       } catch (Exception e) {
          
           logger.error("Couldn't open properties file: " + propFile);
@@ -262,7 +274,7 @@ public class CareApp extends ApplicationWindow {
 
       simTime = new SimTime(Integer.parseInt(appConfig.getProperty(CARE.PROP_APP_TIME_TICK)));
       scheduler = new Scheduler(simTime, Integer.parseInt(appConfig.getProperty(CARE.PROP_APP_TIME_TICK)));
-
+      
    } // End CareApp()
 
    public void postGuiCareConstuctor() {
@@ -415,6 +427,127 @@ public class CareApp extends ApplicationWindow {
       actionManageToPkts.setText("Manage TO Pkt");
       actionManageToPkts.setToolTipText("Enable/disable packets for Telemetry Output");
       //actionCfgToPkt.setImageDescriptor(ImageDescriptor.createFromFile(null, ""));
+
+      /********************************
+       *  ACTION: Get a file to the CFS
+       *  
+       */
+      actionGetFileFromCFS = new Action() 
+      {
+         public void run() {
+
+            final String fileName = appConfig.getProperty(CARE.PROP_APP_FILE_SERVER) + "TFTP-get-test.txt";
+            logger.trace("Get file from the cFS and write to " + fileName);
+             
+            Display.getDefault().syncExec(new Runnable() {
+               public void run() {
+                  logger.trace("Creating TFTP session to get file");
+                  final TftpClient tftpClient = new TftpClient(appConfig.getProperty(CARE.PROP_APP_CFS_IP_ADDR),"/ram/TFTP-get-test3.txt"); 
+                  logActivity(CARE.LOG_USER, "TFTP ground client created", true);
+                  Display.getDefault().timerExec(1000, new Runnable() {
+                     public void run() {
+                        try {
+	                       if (tftpClient.getFile(fileName) == 0) {
+	                          logActivity(CARE.LOG_USER, "TFTP successfully got " + fileName, true);	 
+	                       } else {
+	                          logActivityError(CARE.LOG_USER, "TFTP failed to get " + fileName);
+	                       }
+                        }
+                        catch (Exception e) {
+                           e.printStackTrace();
+                        }
+                     } // End run()
+                  }); // End timerExec()
+
+               } // End run()
+            }); // End runnable()
+ 
+         } // End run()
+      }; // End Action()
+      
+      actionGetFileFromCFS.setText("Get a file from the CFS");
+      actionGetFileFromCFS.setToolTipText("Get a file from the CFS");
+
+      /********************************
+       *  ACTION: Put a file to the CFS
+       *  
+       *  TODO - Add destination file management
+       */
+      actionPutFileToCFS = new Action() 
+      {
+         public void run() {
+
+            logger.trace("Put File to the cFS");
+            FileDialog fileDialog = new FileDialog(getShell(), SWT.OPEN);
+            fileDialog.setFilterPath(CARE.PATH_CWD);
+            logger.debug("PutFileToCFS: " + CARE.PATH_CWD);
+            final String appFile = fileDialog.open();
+             
+            if (appFile != null) {
+           	   Display.getDefault().syncExec(new Runnable() {
+                  public void run() {
+                     logger.trace("Creating TFTP session to put file");
+                     // TODO - Remove once server working: 
+                     // TDOO final TftpSession Tftp = new TftpSession(appConfig.getProperty(CARE.PROP_APP_CFS_IP_ADDR));
+                     //if (Tftp.createClient()) {  // TODO - TftpServer.isRunning()) {  
+                     final TftpClient tftpClient = new TftpClient(appConfig.getProperty(CARE.PROP_APP_CFS_IP_ADDR),"/ram/TFTP-put-test.txt"); 
+                         logActivity(CARE.LOG_USER, "TFTP ground client created", true);
+                         FswAppProxy toProxy = getFswAppProxy(CARE.XML_VAL_APP_TFAPP);
+                         CmdPkt cmd = toProxy.getFswXmlApp().getCmdPkt(TfApp.CMD_FC_PUT_FILE);
+
+                         //char    Host[TFTP_HOST_NAME_LEN];
+                         //char    Port[TFTP_PORT_NAME_LEN];
+                         //char    SrcFileName[TFTP_FILE_NAME_LEN];
+                         //char    DestFileName[TFTP_FILE_NAME_LEN];
+                         // TODO - Remove hardcoded parameters
+                         //cmd.setParam(0, Tftp.getClient().getLocalAddress().toString());
+                         //cmd.setParam(1, Integer.toString(Tftp.getClient().getLocalPort()));
+                         //cmd.setParam(0, "1237");
+                         //cmd.setParam(1, "Test");
+                         //cmd.setParam(2, "/ram/TBD.txt");
+                         //cmd.loadParamList();
+                         //cmdWriter.sendCmd(cmd.getCcsdsPkt());
+                         //logActivity(CARE.LOG_USER, "TFTP put file " + appFile + " to port " + Tftp.getClient().getLocalPort(), true);
+                         logActivity(CARE.LOG_USER, "TFTP put file " + appFile, true);
+                         Display.getDefault().timerExec(1000, new Runnable() {
+
+                             public void run() {
+
+                                //if (Tftp.putFile(appFile, "/ram/TBD.txt")) {
+                            	try {
+	                            	if (tftpClient.putFile(appFile) == 0) {
+	                            	
+	                                   logActivity(CARE.LOG_USER, "TFTP successfully put " + appFile, true);	 
+	                                } else {
+	                                   //logActivityError(CARE.LOG_USER, "TFTP failed to put " + appFile + ". " + Tftp.getErrString());
+	                                   logActivityError(CARE.LOG_USER, "TFTP failed to put " + appFile);
+	                                }
+                            	}
+                            	catch (Exception e) {
+                            		
+                            	}
+                             } // End run()
+
+                         }); // End timerExec()
+
+                     //} // End if TFTP server running
+                     //else {
+                     //	 logActivityError(CARE.LOG_CONSOLE, "TFTP server not running"); // TODO - Addc corrective action 
+                     //}
+
+                  } // End run()
+         	   }); // End runnable()
+            } // End if appFile valid
+            else {
+             
+               logActivityError(CARE.LOG_USER, "Failed to open file");
+                
+            } // End if appFile != null
+
+         } // End run()
+      }; // End Action()
+      actionPutFileToCFS.setText("Put a file to the CFS");
+      actionPutFileToCFS.setToolTipText("Send a file to the CFS");
 
       /********************************
        *  ACTION: Add user application to database and menu system. This does
@@ -737,6 +870,9 @@ public class CareApp extends ApplicationWindow {
          menuFile.add(new Separator());
       }
       menuFile.add(actionManageToPkts);
+      menuFile.add(new Separator());
+      menuFile.add(actionGetFileFromCFS);
+      menuFile.add(actionPutFileToCFS);
       menuFile.add(new Separator());
       menuFile.add(actionExit);
       
@@ -1064,13 +1200,15 @@ public class CareApp extends ApplicationWindow {
       }
       
       public void  execute() {
-         
-         logger.trace("OneHzDisplay execute called");
-         actionDisplayTime.setText(TIME_STR_PAD+simTime.getLogString());
-         //~~textTimeMenu.setText(simTime.getLogString());
-         //textTime.setText(simTime.getLogString());
-         //logActivity(CARE.LOG_CONSOLE, "One Hz Tick", false);
-         
+    	 Display.getDefault().syncExec(new Runnable() {
+            public void run() {
+               logger.trace("OneHzDisplay execute called");
+               actionDisplayTime.setText(TIME_STR_PAD+simTime.getLogString());
+               //~~textTimeMenu.setText(simTime.getLogString());
+               //textTime.setText(simTime.getLogString());
+               //logActivity(CARE.LOG_CONSOLE, "One Hz Tick", false);
+            } // End run()
+    	 }); // End runnable()
       } // End Execute()
       
    } // End class OneHzDisplay
@@ -1086,16 +1224,17 @@ public class CareApp extends ApplicationWindow {
       
       public void  execute() {
          
-         while (!proxyStatusMsgQ.isEmpty()) {
-            
-            StatusMsg statusMsg = proxyStatusMsgQ.remove();
-            if (statusMsg.getType() == StatusMsg.Type.INFO)
-               logActivity(CARE.LOG_USER, statusMsg.getText(), false);
-            else
-               logActivityError(CARE.LOG_USER, statusMsg.getText());
-            
-         } // End while Q not empty
-         
+     	 Display.getDefault().syncExec(new Runnable() {
+             public void run() {
+               while (!proxyStatusMsgQ.isEmpty()) {
+                  StatusMsg statusMsg = proxyStatusMsgQ.remove();
+                  if (statusMsg.getType() == StatusMsg.Type.INFO)
+                     logActivity(CARE.LOG_USER, statusMsg.getText(), false);
+                  else
+                     logActivityError(CARE.LOG_USER, statusMsg.getText());
+                  } // End while Q not empty
+             } // End run()
+     	 }); // End runnable()
       } // End Execute()
       
    } // End class proxyMonitor
@@ -1120,29 +1259,32 @@ public class CareApp extends ApplicationWindow {
          
          logger.trace("TlmMonitor execute called");
          
-         synchronized (tlmDatabase) {
-
-            while (!tlmReader.getTlmPktQ().isEmpty()) {
-               
-               CcsdsTlmPkt ccsdsTlmPkt = tlmReader.getTlmPktQ().remove();
-               int streamId = ccsdsTlmPkt.getStreamId();
-               
-               logger.trace("TlmMonitor dequeued packet " + Integer.toHexString(streamId));
-               
-               if (streamId == EvsApp.TLM_MID_EVENT_MSG) {
-                  logFswEventMessage(EvsApp.formatEventStr(ccsdsTlmPkt.getByteArray(),0),EvsApp.getEventType(ccsdsTlmPkt));
-               }
-               TlmDialog tlmDialog = tlmPageManager.getPage(streamId);
-               if (tlmDialog != null) {
-                  
-                  logger.trace("TlmMonitor found " + Integer.toHexString(streamId) + " in tlmPageManager");
-                  tlmDialog.updateValues(ccsdsTlmPkt);
-                  tlmUpdated[streamId] = false;
-               } // End tlmDialog != null
-            } // End while packets in queue
-
-         } // End synchronized block
-
+     	 Display.getDefault().syncExec(new Runnable() {
+             public void run() {
+	         synchronized (tlmDatabase) {
+	
+	            while (!tlmReader.getTlmPktQ().isEmpty()) {
+	               
+	               CcsdsTlmPkt ccsdsTlmPkt = tlmReader.getTlmPktQ().remove();
+	               int streamId = ccsdsTlmPkt.getStreamId();
+	               
+	               logger.trace("TlmMonitor dequeued packet " + Integer.toHexString(streamId));
+	               
+	               if (streamId == EvsApp.TLM_MID_EVENT_MSG) {
+	                  logFswEventMessage(EvsApp.formatEventStr(ccsdsTlmPkt.getByteArray(),0),EvsApp.getEventType(ccsdsTlmPkt));
+	               }
+	               TlmDialog tlmDialog = tlmPageManager.getPage(streamId);
+	               if (tlmDialog != null) {
+	                  
+	                  logger.trace("TlmMonitor found " + Integer.toHexString(streamId) + " in tlmPageManager");
+	                  tlmDialog.updateValues(ccsdsTlmPkt);
+	                  tlmUpdated[streamId] = false;
+	               } // End tlmDialog != null
+	            } // End while packets in queue
+	
+	         } // End synchronized block
+             } // End run()
+     	 }); // End runnable()
       } // End Execute()
 
    } // End class OneHzDisplay
@@ -1242,7 +1384,7 @@ public class CareApp extends ApplicationWindow {
       String[] toolCmds = coreToolCmds.split(",");   // Each tool Cmd is specified as a Prefix:FuncCode pair
       
       ToolBarManager toolMenu  = getToolBarManager();
-      
+      logger.debug("Tool command property string: " + coreToolCmds);
       for (int i=0; i < toolCmds.length; i++) {
          FswAppProxy appProxy = null;
          String[] cmdPair = toolCmds[i].split(":");
@@ -1255,6 +1397,10 @@ public class CareApp extends ApplicationWindow {
                logger.debug("Found cmdAction");
                toolMenu.insertBefore(TOOL_BAR_HELP_ID, (IAction)cmdAction);
                toolMenu.insertBefore(TOOL_BAR_HELP_ID, new Separator());
+            }
+            else {
+               // TODO - Get thread exception. Need general startup message strategy. Can Proxy msg Q be used? Create local buffer of messages that can be output after GUI created or use proxy message queue
+               // logActivityError(CARE.LOG_CONSOLE, "Invalid toolbar app:fc definition " + toolCmds[i] + " specified in properties file.");
             }
          } // End if appPRoxy
            

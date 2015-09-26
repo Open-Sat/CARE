@@ -55,6 +55,7 @@ public class CARE {
    static final public String PROP_APP_USER_APPS    = "user-apps";
    static final public String PROP_APP_CORE_TOOL_CMDS = "core-tool-cmds";
    static final public String PROP_APP_LUA_STARTUP  = "lua-startup";
+   static final public String PROP_APP_FILE_SERVER  = "file-server";
    
    /*****************************************************************************
     ** 
@@ -193,6 +194,7 @@ public class CARE {
    static final public String XML_VAL_APP_LABCMD = "LABCMD";
    static final public String XML_VAL_APP_LABTLM = "LABTLM";
    static final public String XML_VAL_APP_LABSCH = "LABSCH";
+   static final public String XML_VAL_APP_TFAPP  = "TFAPP";
 
    static final public String XML_VAL_FLT     = "Float";
    static final public String XML_VAL_INT     = "Integer";
